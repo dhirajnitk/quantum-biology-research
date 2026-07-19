@@ -1,0 +1,14 @@
+# PDB structure cache (auto-downloaded from RCSB)
+data/cache/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE files
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

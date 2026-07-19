@@ -1,0 +1,11 @@
+Trp_i,Trp_j,Distance_A,Regime
+26,113,5.74,coupled
+67,68,7.12,coupled
+68,87,14.73,coupled
+26,67,30.19,relay
+26,68,30.73,relay
+26,87,37.58,relay
+67,87,21.45,relay
+67,113,32.22,relay
+68,113,33.03,relay
+87,113,40.77,relay
