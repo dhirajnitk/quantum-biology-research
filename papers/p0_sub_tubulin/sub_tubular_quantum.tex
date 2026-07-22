@@ -159,7 +159,7 @@ J_{ij} = \frac{J_0}{\sqrt{\varepsilon}} \left(\frac{R_0}{R_{ij}}\right)^3 \cdot 
 
 with $J_0 = -80$~cm$^{-1}$, $R_0 = 10$~\AA{}, and $\varepsilon$ the local dielectric constant. This is the standard FRET coupling term used in excitonic transport models, not a free-space optical link.
 
-We parameterize a hypothetical information-theoretic constraint using CCO as a candidate acceptor. The spatial gap between the active zone and mitochondrial inner membrane ($\sim 10$--$20$~nm) is in the near-field regime at $\lambda = 327$~nm ($r/\lambda \approx 0.03$). We use the cross-section ratio $p = \sigma/A_{\mathrm{target}}$ as an effective benchmark; a rigorous treatment would require a dipole-dipole coupling formalism (see Limitations).
+We parameterize a hypothetical information-theoretic constraint using CCO as a candidate acceptor. The spatial gap between the active zone and mitochondrial inner membrane ($\sim 10$--$20$~nm) is in the near-field regime at $\lambda = 327$~nm ($r/\lambda \approx 0.03$), where evanescent coupling rather than free-space photon propagation applies. We apply the far-field cross-section ratio $p = \sigma/A_{\mathrm{target}}$ strictly as an upper-bound benchmark; this is a simplifying approximation because the cross-section concept assumes propagating waves, whereas the relevant distance scale requires a dipole-dipole coupling matrix (see Limitations).
 
 The hypothetical channel is defined by an asymmetric binary transition matrix:
 
@@ -199,7 +199,7 @@ The low single-event probability is overcome via $N$ independent Trp cores distr
 Switching the target from Trp to CCO ($\sigma_{\mathrm{CCO}} = 8.0\times10^{-21}$~m$^2$) raises the per-core probability to the value given in Eq.~\ref{eq:gating}. Monte Carlo validation with both Beta-distributed and Gaussian noise confirms that biological heterogeneity changes the reliability by less than $0.05\%$.
 
 \begin{table*}[htbp]
-\caption{Spatial gating with CCO target. $p = 7.84\times10^{-4}$.}
+\caption{Spatial gating with CCO target using far-field benchmark $p = 7.84\times10^{-4}$.}
 \label{tab:gating}
 \centering
 \begin{tabular}{cccc}
@@ -383,7 +383,7 @@ Several limitations should be noted, which define clear boundaries between the c
 
 \textbf{Spatial topology.} The $N \approx 5\,000$ derivation uses presynaptic active zone membrane area and receptor density, while CCO is located in the inner mitochondrial membrane of separate organelles. Treating these as a single 2D channel omits the 3D spatial arrangement between plasma membrane emitters and mitochondrial acceptors. A full tomographic reconstruction would be needed to refine this approximation.
 
-\textbf{Near-field cross-section model.} The cross-section ratio $p = \sigma/A_{\mathrm{target}}$ is a far-field photon capture concept, applied here in the sub-wavelength regime ($r/\lambda \approx 0.03$) where near-field dipole-dipole coupling ($1/r^3$ or $1/r^6$ scaling) would be the physically correct formalism. This is a simplifying approximation that should be replaced with a dipole overlap integral in future analyses.
+\textbf{Near-field cross-section model.} The cross-section ratio $p = \sigma/A_{\mathrm{target}}$ is a far-field photon capture concept that assumes free-space propagating waves. It is applied here in the sub-wavelength regime ($r/\lambda \approx 0.03$) where evanescent near-field coupling dominates and $1/r^3$ (excitonic) or $1/r^6$ (F\"orster) dipole-dipole scaling would be the physically correct formalism. The cross-section ratio should therefore be interpreted as an upper-bound benchmark, not a rigorous near-field transition probability. Replacing it with a dipole overlap integral is necessary for a quantitatively accurate treatment.
 
 \textbf{Ensemble synchronization trigger.} The model demonstrates that $N \approx 5\,000$ parallel Trp cores yield $P_{\mathrm{success}} \ge 98\%$ over an asymmetric binary link. While individual Trp cores exhibit ultrafast coherent hopping (18--35 fs) and superradiant emission (50--100 fs) within local hydrophobic pockets, the biological trigger coordinating excitation across thousands of active-zone protein complexes during a single spike remains an open question. However, because the channel has zero dark counts, strict sub-picosecond phase synchronization across all $5\,000$ cores is not required --- the repetition code functions as long as $N$ independent cores fire within the pre-to-postsynaptic integration window ($\sim 1$~ms). Candidate triggers include local $\mathrm{Ca}^{2+}$-mediated electrostatic transients or macro-scale field coupling, but neither is explicitly modeled.
 
