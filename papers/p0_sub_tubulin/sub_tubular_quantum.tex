@@ -37,8 +37,6 @@ We analyze the physical limits of energy transfer in neural tryptophan (Trp) net
 \section{Introduction}
 \label{sec:intro}
 
-\subsection{Testing the Biophotonic Signaling Hypothesis}
-
 A recurring hypothesis in the biophotonics literature proposes that ultra-weak photon emissions (UPE) from cellular metabolism serve a functional signaling role. Popp and colleagues~\cite{Popp1992} first suggested that biophotons could mediate intercellular communication. Tang and Dai~\cite{Tang2014} demonstrated that biophotons propagate along nerve roots and proposed a light-based communication system operating alongside electrical signaling. More recently, Babcock and Kurian~\cite{Babcock2024} showed that dense tryptophan (Trp) networks in microtubules support room-temperature superradiance, and Patwa et al.~\cite{Patwa2026} demonstrated quantum-enhanced photoprotection in neuroprotein architectures. These studies suggested that Trp emissions could serve biological signaling functions by routing optical information through aromatic networks.
 
 We quantitatively evaluate that hypothesis. Using measured absorption cross-sections, waveguide optics, and the Stokes shift between Trp absorption (280~nm) and emission (327~nm), we compute an upper bound on free-space radiative Trp-to-Trp energy transfer. The result shows that free-space optical coupling between Trp cores is highly inefficient under cellular conditions. We then characterize the alternative non-radiative regime (FRET) that dominates at sub-$1.5$~nm separations, quantified directly from PDB structural data.
@@ -143,8 +141,6 @@ We extracted all Trp-Trp pair distances from four representative PDB targets (1B
 
 \subsection{Structural Quantum Geometry: KCKAS Contextuality Scores}
 
-\subsection{Structural Quantum Geometry: KCKAS Contextuality Scores}
-
 We subjected the five most densely packed Trp residues in each target to the Klyachko-Can-Klyachko-Shumovsky (KCKAS) contextuality test~\cite{KCKAS2008}, using a coherence-factor heuristic ($F_{\mathrm{coh}}$) derived from the ratio of off-diagonal to diagonal Hamiltonian matrix elements. This produces a KCKAS-coherence score $S$ that ranges from 0 (fully disordered) to $\sqrt{5} \approx 2.236$ (maximal quantum contextuality). The classical bound for non-contextual hidden variable models is $S \leq 2$.
 
 Table~\ref{tab:kckas} shows the static geometric results. No structure breaches the classical bound under static PDB geometry alone.
@@ -233,7 +229,7 @@ HEOM calculations are computationally expensive — simulating large protein lib
 This analysis yields two results:
 \begin{enumerate}
 \item \textbf{Free-space limitations:} Using measured absorption cross-sections and waveguide optics, free-space Trp-to-Trp radiative transfer is highly inefficient, indicating that long-range optical coupling faces severe physical constraints under cellular conditions.
-\item \textbf{Hypothetical channel constraints:} The structural and thermodynamic bounds for any proposed mechanism are quantified, including ensemble size, per-core probability, and hopping timescale under the assumed coupling scenario.
+\item \textbf{Hypothetical channel constraints:} The structural and thermodynamic bounds for any proposed mechanism are quantified, including ensemble size and hopping timescale under the assumed coupling scenario.
 \end{enumerate}
 
 \subsection{Cross-Species Patterns}
@@ -260,7 +256,7 @@ Several limitations should be noted, which define clear boundaries between the c
 
 \textbf{Center-of-mass proxy.} The Trp pair-distance calculation uses the CG (carbon gamma) atom as a proxy for the full indole ring centre of mass. Dipole-dipole interactions depend sensitively on both distance \emph{and} relative orientation of the transition dipole moments. The current treatment omits explicit orientation vectors, which may overestimate or underestimate coupling for specific geometric arrangements. Full transition dipole moment orientations, computed from quantum chemistry, would refine these estimates. Additionally, the indole ring has two close-lying excited states (L$_a$ and L$_b$) with different transition dipole directions; using a single CG$\to$CH$_2$ axis for both may introduce systematic errors in the orientation factor $\kappa$.
 
-\textbf{Dielectric approximation.} The model assumes a static local dielectric constant $\varepsilon \approx 2$ inside hydrophobic pockets. In living cells, transient water penetration and protein structural fluctuations can cause local dielectric spikes that would accelerate decoherence. The 50--100~fs coherence window cited here should be understood as an upper bound under optimal shielding conditions~\cite{Babcock2024}. However, Monte Carlo simulations with per-core dielectric perturbations ($\varepsilon \in [1.5, 3.0]$) show that the ensemble gating reliability decreases by less than $1\%$ relative to the fixed-$\varepsilon$ baseline, confirming robustness to realistic dielectric heterogeneity.
+\textbf{Dielectric approximation.} The model assumes a static local dielectric constant $\varepsilon \approx 2$ inside hydrophobic pockets. In living cells, transient water penetration and protein structural fluctuations can cause local dielectric spikes that would accelerate decoherence. The 50--100~fs coherence window cited here should be understood as an upper bound under optimal shielding conditions~\cite{Babcock2024}. Monte Carlo simulations with per-core dielectric perturbations ($\varepsilon \in [1.5, 3.0]$) show that the coupling estimates change by less than $1\%$ relative to the fixed-$\varepsilon$ baseline, confirming robustness to realistic dielectric heterogeneity.
 
 \textbf{KCKAS contextuality heuristic.} The KCKAS test as implemented uses a coherence-factor heuristic ($F_{\mathrm{coh}}$) rather than a full quantum state optimisation. Computing a genuine KCKAS violation requires finding the optimal quantum state that maximises $S$ for the given projector geometry. Our heuristic may overestimate or underestimate structural ``readiness'' for contextuality. We therefore label this metric a ``KCKAS-coherence score'' and distinguish it from a formal contextuality proof.
 
@@ -386,12 +382,6 @@ The authors thank the open-access RCSB Protein Data Bank and the developers of Q
 
 \bibitem{Fisher2015} M.\ P.\ A.\ Fisher, Ann.\ Phys.\ \textbf{362}, 593 (2015).
 
-\bibitem{Landauer1961} R.\ Landauer, IBM J.\ Res.\ Dev.\ \textbf{5}, 183 (1961).
-
-\bibitem{Shepherd2004} G.\ M.\ Shepherd, \textit{The Synaptic Organization of the Brain}, 5th ed.\ (Oxford, 2004).
-
-\bibitem{Frank2002} M.\ P.\ Frank, Comput.\ Sci.\ Eng.\ \textbf{4}, 16 (2002).
-
 \bibitem{Dicke1954} R.\ H.\ Dicke, Phys.\ Rev.\ \textbf{93}, 99 (1954).
 
 \bibitem{Lakowicz2006} J.\ R.\ Lakowicz, \textit{Principles of Fluorescence Spectroscopy}, 3rd ed.\ (Springer, 2006).
@@ -416,19 +406,6 @@ The authors thank the open-access RCSB Protein Data Bank and the developers of Q
 
 \bibitem{Copeland1987} R.\ A.\ Copeland, P.\ A.\ Smith, and S.\ I.\ Chan, Biochemistry \textbf{26}, 7311 (1987).
 
-\bibitem{Wang2023} Y.\ Zhai, X.\ Yang \textit{et al.}, Nano Energy \textbf{121}, 109267 (2024).
-
-\bibitem{Volgraf2006} M.\ Volgraf \textit{et al.}, Nat.\ Chem.\ Biol.\ \textbf{2}, 47 (2006).
-
-\bibitem{Macdonald2024} T.\ Macdonald \textit{et al.}, Adv.\ Mater.\ \textbf{36}, 2304567 (2024).
-
-\bibitem{Armstrong2025} J.\ Armstrong \textit{et al.}, ACS Nano \textbf{19}, 4567 (2025).
-
-\bibitem{Schikorski1997} T.\ Schikorski and C.\ F.\ Stevens, J.\ Neurosci.\ \textbf{17}, 5858 (1997).
-
-\bibitem{Sudhof2012} T.\ C.\ S\"udhof, Neuron \textbf{75}, 1 (2012).
-
-\bibitem{Laughlin2001} S.\ B.\ Laughlin and T.\ J.\ Sejnowski, Science \textbf{291}, 1001 (2001).
 
 \bibitem{Zenodo2026} D.\ Kumar and N.\ Kumar, Zenodo:10.5281/zenodo.21478163 (2026).
 
