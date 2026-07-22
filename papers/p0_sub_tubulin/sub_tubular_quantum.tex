@@ -229,7 +229,7 @@ HEOM calculations are computationally expensive — simulating large protein lib
 This analysis yields two results:
 \begin{enumerate}
 \item \textbf{Free-space limitations:} Using measured absorption cross-sections and waveguide optics, free-space Trp-to-Trp radiative transfer is highly inefficient, indicating that long-range optical coupling faces severe physical constraints under cellular conditions.
-\item \textbf{Hypothetical channel constraints:} The structural and thermodynamic bounds for any proposed mechanism are quantified, including ensemble size and hopping timescale under the assumed coupling scenario.
+\item \textbf{FRET regime constraints:} The structural bounds for non-radiative transfer are quantified, including the sub-$1.5$~nm coupling threshold and coherent hopping timescale.
 \end{enumerate}
 
 \subsection{Cross-Species Patterns}
@@ -268,16 +268,7 @@ Several limitations should be noted, which define clear boundaries between the c
 
 \textbf{Time-dependent driving.} We do not specify a microscopic mechanism for the non-equilibrium driving that would be required to push the KCKAS score from its static value ($S \leq 1.97$) above the classical bound ($S > 2$). One candidate --- modulation of Trp site energies by the membrane electric field --- would require coupling strengths orders of magnitude larger than a direct Stark shift from gamma-band fields ($\sim 10$--$100$~V/m) could provide. This remains an open theoretical question that any viable Trp-based signaling model would need to address.
 
-\textbf{Cytochrome-$c$ oxidase as receiver.} The per-core success probability for the CCO target assumes CCO is the relevant photoreceptor at 327~nm. CCO has a known Soret band absorption near this wavelength~\cite{Wikstrom2012} and is abundant in synaptic mitochondria clustered in the presynaptic active zone. Several lines of experimental evidence support the viability of this hypothesis, though none directly confirm the functional link:
-\begin{itemize}
-\item \textbf{Neurons emit activity-dependent ultraweak photons.} Depolarising hippocampal slices with high K$^+$ or glutamate increases biophoton emission; blocking voltage-gated Na$^+$ channels with tetrodotoxin suppresses it~\cite{Tang2014b}. The emission spectrum spans the near-UV to visible range (310--700~nm) and tracks mitochondrial oxidative metabolism.
-\item \textbf{CCO Soret band absorption.} Photobiomodulation studies establish that CCO absorbs red and near-infrared light (~600--850~nm) as its functional regime~\cite{WongRiley2005, Karu1999}. At 327~nm, absorption occurs via the higher-energy Soret band rather than the functional NIR bands; we use the Soret cross-section ($\sigma_{\mathrm{CCO}} = 8.0\times10^{-21}$~m$^2$) solely as a mathematical benchmark for a dense mitochondrial enzyme.
-\item \textbf{Biophotons can propagate along neural structures.} Stimulating one end of a nerve root generates biophotonic emission that propagates along the sheath and can be blocked by local anesthetics~\cite{Tang2014}. Lipid membranes are known to act as low-loss optical waveguides in the visible and near-UV spectrum~\cite{vanMeer2008}.
-\item \textbf{CCO tryptophan fluorescence responds to redox state.} Reducing the Cu$_A$ centre in CCO shifts intrinsic Trp fluorescence, confirming direct optical coupling between Trp networks and CCO redox transitions~\cite{Wikstrom2012, Copeland1987}.
-\end{itemize}
-Despite this body of evidence, the specific hypothesis that presynaptic Trp biophotons are selectively received by CCO arrays as a functional gating mechanism in vivo remains to be demonstrated directly. Alternative receivers such as iron-sulfur clusters or flavin mononucleotides in cryptochrome domains should also be investigated.
 
-We emphasise that CCO is a quantum-mechanical transducing engine at its core. Its internal electron transport chain (Cu$_A \to$ heme $a \to$ heme $a_3$/Cu$_B$) operates via quantum mechanical electron tunneling across $\sim 12$--$20$~\AA{} barriers~\cite{Wikstrom2012}. The absorbed $327$~nm photon ($3.79$~eV) excites metal-to-ligand charge-transfer states in the Cu$_A$/heme centres, transiently lowering the effective tunneling barrier and accelerating electron transfer. Only the subsequent proton pumping (H$^+$ translocation) and bulk ATP synthesis follow semi-classical conformational dynamics. The Trp-CCO link probability depends solely on the absorption cross-section $\sigma_{\mathrm{CCO}}$, not on the internal quantum state of the receiver; however, the signal transduction mechanism within CCO is fundamentally quantum mechanical.
 
 \textbf{Machine learning scope.} The machine learning surrogate model described in the companion manuscript (see Zenodo~\cite{Zenodo2026}) is a proof-of-concept trained on synthetic data. It is not yet validated on experimental or large-scale structural data. We present it as a framework for future high-throughput screening rather than as a fully validated predictive tool.
 
@@ -394,17 +385,9 @@ The authors thank the open-access RCSB Protein Data Bank and the developers of Q
 
 \bibitem{Valeur2012} B.\ Valeur and M.\ N.\ Berberan-Santos, \textit{Molecular Fluorescence: Principles and Applications}, 2nd ed.\ (Wiley, 2012).
 
-\bibitem{WongRiley2005} M.\ T.\ T.\ Wong-Riley \textit{et al.}, J.\ Biol.\ Chem.\ \textbf{280}, 4761 (2005).
-
-\bibitem{Karu1999} T.\ I.\ Karu, J.\ Photochem.\ Photobiol.\ B \textbf{49}, 1 (1999).
-
 \bibitem{Popp1992} F.\ A.\ Popp \textit{et al.}, Experientia \textbf{48}, 1029 (1992).
 
 \bibitem{Tang2014} R.\ Tang and J.\ Dai, PLoS ONE \textbf{9}, e93540 (2014).
-
-\bibitem{Tang2014b} R.\ Tang and J.\ Dai, PLoS ONE \textbf{9}, e85643 (2014).
-
-\bibitem{Copeland1987} R.\ A.\ Copeland, P.\ A.\ Smith, and S.\ I.\ Chan, Biochemistry \textbf{26}, 7311 (1987).
 
 
 \bibitem{Zenodo2026} D.\ Kumar and N.\ Kumar, Zenodo:10.5281/zenodo.21478163 (2026).
