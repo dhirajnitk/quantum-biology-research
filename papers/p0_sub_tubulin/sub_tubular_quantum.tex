@@ -29,7 +29,7 @@
 \date{\today}
 
 \begin{abstract}
-We analyze the physical limits of energy transfer in neural tryptophan (Trp) networks using 20 cryo-EM and X-ray structures from the Protein Data Bank. Energy transfer is characterized by two distinct regimes separated by a critical distance of $\sim1.5$~nm: (i) non-radiative dipole-dipole coupling (F\"orster resonance energy transfer, FRET) dominates at sub-$1.5$~nm separations, with efficiency $E_{\mathrm{FRET}} > 0.90$ for the closest Trp pairs; (ii) free-space radiative transfer is highly inefficient beyond $2$~nm, with probability $P_{\mathrm{free}} < 10^{-5}$ per exciton due to $1/r^2$ geometric spreading, ultraviolet tissue attenuation ($\alpha \sim 1000$~m$^{-1}$), and spectral mismatch between Trp emission ($\sim320$--$350$~nm) and candidate acceptor absorption bands. Pair-distance histograms from 18 neural proteins show that adjacent Trp residues cluster at $0.6$--$1.3$~nm, placing them in the FRET-dominated regime. Using PDB coordinates to compute dipole coupling matrices, we find coupling strengths of $J_{ij} \approx 150$--$300$~cm$^{-1}$ for the closest pairs, corresponding to exciton hopping times of $18$--$35$~fs. A parallel ensemble of $N \approx 5\,000$ cores could theoretically achieve $>98\%$ transfer reliability via spatial repetition coding, with an energy cost per event ($\sim1.85\times10^{-15}$~J) that is $\sim16$-fold more efficient than classical CMOS and consumes $<2\%$ of the brain's 20~W metabolic budget. This work establishes a two-regime analysis: free-space optical Trp-Trp coupling faces severe physical constraints, while non-radiative FRET at sub-$1.5$~nm distances within low-dielectric hydrophobic pockets ($\varepsilon \approx 2$~\cite{Huang2019}) is structurally viable and quantified from PDB data.
+We analyze the physical limits of energy transfer in neural tryptophan (Trp) networks using 20 cryo-EM and X-ray structures from the Protein Data Bank. Energy transfer is characterized by two distinct regimes separated by a critical distance of $\sim1.5$~nm: (i) non-radiative dipole-dipole coupling (F\"orster resonance energy transfer, FRET) dominates at sub-$1.5$~nm separations, with efficiency $E_{\mathrm{FRET}} > 0.90$ for the closest Trp pairs; (ii) free-space radiative transfer is highly inefficient beyond $2$~nm, with probability $P_{\mathrm{free}} < 10^{-5}$ per exciton due to $1/r^2$ geometric spreading, ultraviolet tissue attenuation ($\alpha \sim 1000$~m$^{-1}$), and spectral mismatch between Trp emission ($\sim320$--$350$~nm) and candidate acceptor absorption bands. Pair-distance histograms from 18 neural proteins show that adjacent Trp residues cluster at $0.6$--$1.3$~nm, placing them in the FRET-dominated regime. Using PDB coordinates to compute dipole coupling matrices, we find coupling strengths of $J_{ij} \approx 150$--$300$~cm$^{-1}$ for the closest pairs, corresponding to exciton hopping times of $18$--$35$~fs. This work establishes a two-regime analysis: free-space optical Trp-Trp coupling is highly inefficient, while non-radiative FRET at sub-$1.5$~nm distances within low-dielectric hydrophobic pockets ($\varepsilon \approx 2$~\cite{Huang2019}) is structurally viable and quantified from PDB data.
 \end{abstract}
 
 \maketitle
@@ -41,11 +41,7 @@ We analyze the physical limits of energy transfer in neural tryptophan (Trp) net
 
 A recurring hypothesis in the biophotonics literature proposes that ultra-weak photon emissions (UPE) from cellular metabolism serve a functional signaling role. Popp and colleagues~\cite{Popp1992} first suggested that biophotons could mediate intercellular communication. Tang and Dai~\cite{Tang2014} demonstrated that biophotons propagate along nerve roots and proposed a light-based communication system operating alongside electrical signaling. More recently, Babcock and Kurian~\cite{Babcock2024} showed that dense tryptophan (Trp) networks in microtubules support room-temperature superradiance, and Patwa et al.~\cite{Patwa2026} demonstrated quantum-enhanced photoprotection in neuroprotein architectures. These studies suggested that Trp emissions could serve biological signaling functions by routing optical information through aromatic networks.
 
-We quantitatively evaluate that hypothesis. Using measured absorption cross-sections, waveguide optics, and the Stokes shift between Trp absorption (280~nm) and emission (327~nm), we compute an upper bound on free-space radiative Trp-to-Trp energy transfer. The result shows that free-space optical coupling between Trp cores is highly inefficient under cellular conditions.
-
-Having established the upper bound for free-space radiative decay, we model the theoretical parameter space for near-field or waveguide-mediated energy transfer. Using the Soret band absorption cross-section of cytochrome-$c$ oxidase ($\sigma_{\mathrm{CCO}} = 8.0\times10^{-21}$~m$^2$ at 327~nm) as a mathematical benchmark for a dense mitochondrial enzyme, we compute the ensemble size, energy budget, and channel capacity that would be required under a hypothetical coupling scenario. This is presented as an upper-bound constraint model.
-
-This analysis first establishes an upper bound on free-space coupling, then evaluates the physical bounds that any proposed optical mechanism would need to satisfy.
+We quantitatively evaluate that hypothesis. Using measured absorption cross-sections, waveguide optics, and the Stokes shift between Trp absorption (280~nm) and emission (327~nm), we compute an upper bound on free-space radiative Trp-to-Trp energy transfer. The result shows that free-space optical coupling between Trp cores is highly inefficient under cellular conditions. We then characterize the alternative non-radiative regime (FRET) that dominates at sub-$1.5$~nm separations, quantified directly from PDB structural data.
 
 \section{Results}
 
@@ -145,120 +141,7 @@ We extracted all Trp-Trp pair distances from four representative PDB targets (1B
 \label{fig:regimes}
 \end{figure*}
 
-\subsection{Non-Radiative Energy Transfer: A Constraint Analysis}
-
-Non-radiative dipole-dipole coupling (F\"orster resonance energy transfer, FRET) or Dexter electron exchange between adjacent Trp residues operates independently of photon emission, bypassing cytoplasmic tissue attenuation and spectral mismatch. Its efficiency depends on the spatial arrangement and dipole orientation of Trp residues, which we quantify from PDB coordinates.
-
-The dipole-dipole coupling between Trp sites $i$ and $j$ is:
-
-\[
-J_{ij} = \frac{J_0}{\sqrt{\varepsilon}} \left(\frac{R_0}{R_{ij}}\right)^3 \cdot |\kappa|,
-\qquad
-\kappa = \hat{\mu}_i\cdot\hat{\mu}_j - 3(\hat{\mu}_i\cdot\hat{R}_{ij})(\hat{\mu}_j\cdot\hat{R}_{ij}),
-\]
-
-with $J_0 = -80$~cm$^{-1}$, $R_0 = 10$~\AA{}, and $\varepsilon$ the local dielectric constant. This is the standard FRET coupling term used in excitonic transport models, not a free-space optical link.
-
-We parameterize a hypothetical information-theoretic constraint using CCO as a candidate acceptor. The spatial gap between the active zone and mitochondrial inner membrane ($\sim 10$--$20$~nm) is in the near-field regime at $\lambda = 327$~nm ($r/\lambda \approx 0.03$), where evanescent coupling rather than free-space photon propagation applies. We apply the far-field cross-section ratio $p = \sigma/A_{\mathrm{target}}$ strictly as an upper-bound benchmark; this is a simplifying approximation because the cross-section concept assumes propagating waves, whereas the relevant distance scale requires a dipole-dipole coupling matrix (see Limitations).
-
-The hypothetical channel is defined by an asymmetric binary transition matrix:
-
-\[
-\mathbf{P} = \begin{pmatrix} 1 & 0 \\ 1-p & p \end{pmatrix},
-\]
-
-where $p$ is the per-core success probability. The binary nature follows from the Trp S$_0 \to$ S$_1$ transition energy ($3.79$~eV), which exceeds thermal energy $k_B T$ at 310~K ($0.027$~eV) by a factor of $\sim 140$, making spontaneous partial excitation energetically forbidden. The false-positive rate is effectively zero. For a zero-false-positive channel, the Shannon capacity is $C(p) = \log_2(1 + p \cdot q^{q/p})$ where $q = 1-p$.
-
-\begin{figure*}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{figures/fig1_trp_cco_channel.pdf}
-\caption{(a) Trp-CCO Channel transition diagram. (b) Spatial ensemble summation curve with $p = 7.84\times10^{-4}$ for the CCO target. The 95\% and 99\% thresholds are marked.}
-\label{fig:trp_cco_link}
-\end{figure*}
-
-\subsubsection{Hypothetical Channel Architecture}
-
-The channel matrix is a mathematical tool from Shannon theory used to bound what throughput an optical Trp$\to$acceptor link could achieve. We distinguish two levels:
-
-For a single Trp core coupling to a CCO acceptor, the per-event probability is $p = 7.84\times10^{-4}$. If $N$ independent cores fire in parallel, the reliability scales as:
-
-\begin{equation}
-P_{\mathrm{success}}(N) = 1 - (1-p)^N.
-\label{eq:gating}
-\end{equation}
-
-Because the dark count is zero, the hypothetical ensemble would only need to compensate for signal loss, not for false-positive errors.
-
-\subsubsection{Gating Reliability}
-
-The low single-event probability is overcome via $N$ independent Trp cores distributing their firing over an action-potential burst (~1 ms). Because the channel has zero dark counts ($p_{\mathrm{dark}} \approx 0$), photon arrivals at CCO are cumulative over the burst duration --- a successful gating event requires that at least one biophoton in the ensemble is captured within the signaling window. The ensemble size $N \approx 5\,000$ thus represents spatial diversity deployed over a burst rather than a single phase-locked femtosecond flash. Candidate mechanisms for core excitation include:
-\begin{itemize}
-    \item \textbf{Ultrafast collective ion dynamics:} The abrupt $\mathrm{Ca}^{2+}$ influx through voltage-gated channels during an action potential occurs against the background membrane field ($\sim 10^7$~V/m on millisecond timescales), providing a coordinated but not precisely phase-locked trigger.
-    \item \textbf{Superradiant phase-locking via local field coupling:} Strong near-field dipole-dipole interactions within individual protein complexes ($J_{ij} \approx 150$--$300$~cm$^{-1}$) naturally induce self-organized phase synchronization among localized Trp clusters upon excitation.
-\end{itemize}
-Switching the target from Trp to CCO ($\sigma_{\mathrm{CCO}} = 8.0\times10^{-21}$~m$^2$) raises the per-core probability to the value given in Eq.~\ref{eq:gating}. Monte Carlo validation with both Beta-distributed and Gaussian noise confirms that biological heterogeneity changes the reliability by less than $0.05\%$.
-
-\begin{table*}[htbp]
-\caption{Spatial gating with CCO target using far-field benchmark $p = 7.84\times10^{-4}$.}
-\label{tab:gating}
-\centering
-\begin{tabular}{cccc}
-\toprule
-$N$ (cores) & $P_{\mathrm{success}}$ & Capacity (bits) & $N$ for threshold \\
-\midrule
-1 & $0.08\%$ & $0.000$ & --- \\
-100 & $7.5\%$ & $0.041$ & --- \\
-1\,000 & $54.4\%$ & $0.358$ & $N_{50} \approx 884$ \\
-\textbf{5\,000} & \textbf{98.0\%} & $0.930$ & $N_{95} \approx 3\,820$ \\
-\textbf{10\,000} & \textbf{99.96\%} & $0.998$ & $N_{99} \approx 5\,870$ \\
-25\,000 & $100.000\%$ & $1.000$ & --- \\
-\bottomrule
-\end{tabular}
-\end{table*}
-
-The capacity increases monotonically as the ensemble size grows. At $N = 5\,000$ the channel reaches $98.0\%$ reliability with capacity $0.930$~bits; at $N = 10\,000$ it exceeds $99.96\%$ with $0.998$~bits (Table~\ref{tab:gating}, Fig.~\ref{fig:trp_cco_link}b).
-
-\paragraph{Geometry and protein density.} The $N \approx 5\,000$ estimate for the number of Trp emitters follows from empirically measured synapse geometry and protein structural data. Cryo-electron microscopy of CNS presynaptic active zones yields a disk-shaped release area with diameter $300$--$500$~nm, corresponding to $A_{\mathrm{AZ}} \approx 0.125$~$\mu$m$^2$~\cite{Schikorski1997, Sudhof2012}. High-resolution cryo-electron tomography shows that the active-zone membrane is packed with $20\,000$--$30\,000$ receptor proteins per $\mu$m$^2$, giving $2\,500$--$4\,000$ protein complexes per active zone~\cite{Shepherd2004}. Each complex contains $1$--$3$ conserved hydrophobic Trp clusters. Combining these bounds:
-
-\begin{align*}
-N &\approx A_{\mathrm{AZ}} \times \rho_{\mathrm{protein}} \times \langle n_{\mathrm{Trp}} \rangle \\
-&\approx (0.125~\mu\mathrm{m}^2) \times (2\times10^4~\mu\mathrm{m}^{-2}) \times 2 \\
-&\approx 5\,000.
-\end{align*}
-
-This $N \approx 5\,000$ refers to the number of Trp emitters in the presynaptic active zone. The CCO acceptors are located in the inner mitochondrial membrane of adjacent mitochondria; the spatial gap between the active zone and mitochondrial membranes introduces geometric losses discussed in Section~III.I.
-
-\subsubsection{Energy Efficiency}
-
-The energy cost per successfully transmitted bit at $N = 5\,000$ is:
-
-\begin{align*}
-E_{\mathrm{bit}} &= \frac{\alpha_{\mathrm{opt}} \cdot N \cdot E_{\mathrm{exciton}}}{C_{\mathrm{max}}(p)} \\
-&= \frac{0.48 \times 5\,000 \times 7.09\times10^{-19}~\mathrm{J}}{0.93} \\
-&\approx 1.85\times10^{-15}~\mathrm{J}.
-\end{align*}
-
-This is $\sim 6.23\times10^5$ times the Landauer limit $kT\ln 2 \approx 2.97\times10^{-21}$~J at 310~K~\cite{Landauer1961}. For comparison, classical CMOS computing operates at $\sim 10^7$--$10^8$ times the Landauer limit~\cite{Frank2002}. The hypothetical Trp-CCO channel would be $\sim 16$-fold more energy-efficient per bit than classical computing, under the assumed coupling scenario. This comparison counts only the exciton energy and does not include the full metabolic overhead (e.g., ATP cost of maintaining membrane potential, protein synthesis, or vesicle cycling).
-
-\subsubsection{Wavelength Dependence of Energy Cost}
-
-The thermodynamic cost of the channel scales linearly with the energy of a single exciton ($E_{\mathrm{exciton}} = hc / \lambda$). Because Tryptophan absorbs deep UV light, its exciton energy is relatively high compared to longer-wavelength chromophores. For comparison, the hypothetical channel model was evaluated at the Trp UV wavelength ($280$~nm); the energy cost at other wavelengths would differ proportionally, though Trp emission is limited to the UV range and does not extend into the visible or near-infrared.
-
-\subsubsection{Brain-Scale Energy Extrapolation}
-
-To evaluate whether this mechanism is physiologically viable across the whole brain, we scale the per-bit energy to the full human cortex. The adult brain contains approximately $N_{\mathrm{syn}} \approx 10^{14}$ synapses, firing at average rates $f \approx 1$--$10$~Hz depending on cognitive state. The total power required for Trp-CCO communication across all synapses scales as $P_{\mathrm{comm}} = E_{\mathrm{bit}} \times N_{\mathrm{syn}} \times f$, ranging from $0.19$~W at rest ($f = 1$~Hz) to $1.9$~W under active gamma synchrony ($f = 10$~Hz). This represents only $1\%$--$9\%$
-of the brain's $20$~W metabolic budget. The remaining $91\%$--$99\%$ remains available for ion pump recovery (Na$^+$/K$^+$-ATPase), neurotransmitter recycling, and cellular maintenance.
-
-Conversely, if we cap the Trp-CCO communication budget at $10\%$ of the total $20$~W ($2$~W), the maximum sustainable firing rate is $f_{\max} \approx 10.8$~Hz, falling within the theta/alpha band ($4$--$12$~Hz) given sparse coding. Under moderate sparse coding (fraction $s = 0.1$ of synapses active per spike), the effective rate reaches $53.5$~Hz, well within the gamma band, yielding a total information throughput of $R \approx 0.87$~Pbits/s.
-
-In contrast, executing the same $10^{14}$-connection network at $1$~Hz using CMOS switching energies ($\sim 10^{-8}$~J/bit) would consume $P_{\mathrm{CMOS}} \sim 1$~MW (Fig.~\ref{fig:energy}). The Trp-CCO link thus provides energy savings consistent with the observed 20~W brain budget at the whole-organism scale.
-
-\begin{figure*}[htbp]
-\centering
-\includegraphics[width=0.65\textwidth]{figures/fig4_energy.pdf}
-\caption{Energy per successfully transmitted bit, normalised to the Landauer limit $kT\ln 2$. The Trp-channel (UV, $\sim 16\times$) and FMO complex ($\sim 390\times$) are shown for comparison against classical CMOS ($10^7$--$10^8\times$).}
-\label{fig:energy}
-\end{figure*}
+\subsection{Structural Quantum Geometry: KCKAS Contextuality Scores}
 
 \subsection{Structural Quantum Geometry: KCKAS Contextuality Scores}
 
@@ -314,7 +197,7 @@ is distinct from classical linear summation $I(N) \propto N$.
 
 \item \textbf{Anesthetic disruption of Trp packing geometry (Test 4):} General anesthetics (propofol, isoflurane, xenon) bind to hydrophobic pockets in neural proteins adjacent to Trp networks. If Trp network geometry supports quantum coherent coupling, anesthetic binding should disrupt the local dielectric environment or Trp packing geometry, measurably altering Trp fluorescence lifetime or near-UV optical properties.
 
-\item \textbf{Mutational kill-switch (Test 5):} Site-directed mutagenesis of key Trp residues to phenylalanine (Trp$\to$Phe) shifts the absorption spectrum and alters the transition dipole orientation. If the Trp-CCO Channel relies on the specific dipole coupling matrix $J_{ij}$, Trp$\to$Phe mutations should collapse the superradiant decay rate enhancement and suppress $S$ below $2.0$, while leaving classical thermal gating unaffected. This provides a genetic control that distinguishes quantum optical signaling from non-specific thermal or structural artifacts.
+\item \textbf{Mutational kill-switch (Test 5):} Site-directed mutagenesis of key Trp residues to phenylalanine (Trp$\to$Phe) shifts the absorption spectrum and alters the transition dipole orientation. If Trp network coupling relies on the specific dipole coupling matrix $J_{ij}$, Trp$\to$Phe mutations should collapse the superradiant decay rate enhancement and suppress $S$ below $2.0$, while leaving classical thermal gating unaffected.
 \end{enumerate}
 
 
@@ -350,7 +233,7 @@ HEOM calculations are computationally expensive — simulating large protein lib
 This analysis yields two results:
 \begin{enumerate}
 \item \textbf{Free-space limitations:} Using measured absorption cross-sections and waveguide optics, free-space Trp-to-Trp radiative transfer is highly inefficient, indicating that long-range optical coupling faces severe physical constraints under cellular conditions.
-\item \textbf{Hypothetical channel constraints:} The structural and thermodynamic bounds for any proposed mechanism are quantified, including ensemble size, per-core probability, and energy per bit under the assumed coupling scenario.
+\item \textbf{Hypothetical channel constraints:} The structural and thermodynamic bounds for any proposed mechanism are quantified, including ensemble size, per-core probability, and hopping timescale under the assumed coupling scenario.
 \end{enumerate}
 
 \subsection{Cross-Species Patterns}
@@ -363,7 +246,7 @@ The same methods applied to the FMO photosynthetic complex yield results consist
 
 \subsection{Summary of Constraints}
 
-The structural constraints define the physical parameter space for any hypothetical Trp-based optical signaling mechanism: ensemble size ($N \approx 5\,000$), per-core probability ($p \approx 7.84\times10^{-4}$), and coherent hopping timescale ($\tau_{\mathrm{hop}} \sim 18$--$35$~fs). The hypothetical channel capacity ($\sim 0.93$ bits per burst) is consistent with sparse neural coding ($1$--$4\%$ active neurons~\cite{Laughlin2001}). These bounds assume membrane waveguide confinement rather than cytoplasmic propagation.
+The structural constraints derived from this analysis include coherent hopping timescale ($\tau_{\mathrm{hop}} \sim 18$--$35$~fs) and the two-regime crossover at $\sim 1.5$~nm separating FRET-dominated sub-$1.5$~nm interactions from highly inefficient free-space propagation beyond $2$~nm.
 
 The computational framework combines structural bioinformatics with open quantum system methods. The two-regime analysis distinguishes free-space propagation (highly inefficient) from near-field membrane waveguide coupling (separate regime with different constraints). The constraint model is consistent with the $\sim 13$~fs decoherence bound at 310~K, as the hypothetical quantum layer is restricted to 50--100~fs local dynamics within low-dielectric hydrophobic pockets ($\varepsilon \approx 2$) inside individual proteins~\cite{Babcock2024}.
 
