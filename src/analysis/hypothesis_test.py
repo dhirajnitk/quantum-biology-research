@@ -1,11 +1,11 @@
 """
-hypothesis_test.py  —  Spatial ensemble gating as a statistical hypothesis test.
+hypothesis_test.py  â€”  Spatial ensemble gating as a statistical hypothesis test.
 
 The synapse treats each synchronized burst of N Trp cores as a hypothesis test:
-  H0: no signal present  →  gate stays closed
-  H1: signal present     →  gate opens
+  H0: no signal present  â†’  gate stays closed
+  H1: signal present     â†’  gate opens
 
-The Z-channel asymmetry (zero false positives) means α = 0 identically.
+The Z-channel asymmetry (zero false positives) means Î± = 0 identically.
 Statistical power is determined by ensemble size N and target absorption cross-section.
 
 This module computes the experimental prediction: ionic current I(N) as a function
@@ -14,15 +14,15 @@ stimulation of membrane patches.
 
 References
 ----------
-[B2024] Babcock et al. (2024) JPCB — Trp fluorescence QY, spectra
-[Neher1992] Neher & Sakmann (1992) Nature — Patch-clamp electrophysiology
+[B2024] Babcock et al. (2024) JPCB â€” Trp fluorescence QY, spectra
+[Neher1992] Neher & Sakmann (1992) Nature â€” Patch-clamp electrophysiology
 """
 
 import numpy as np
 from numpy import exp, sqrt, log, pi, arcsin, cos
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
-from src.core.biophoton_relay import BiophotonRelay, channel_capacity
+from src.core.biophoton_relay import BiophotonRelay, z_channel_capacity as channel_capacity
 
 
 class HypothesisTest:
@@ -36,11 +36,11 @@ class HypothesisTest:
         Total number of Trp cores available in the synapse.
     """
 
-    def __init__(self, p_per_core=7.79e-4, n_cores_total=50000):
+    def __init__(self, p_per_core=5.92e-4, n_cores_total=50000):
         self.p = p_per_core
         self.N = n_cores_total
 
-    # ── Core statistical metrics ───────────────────────────────
+    # â”€â”€ Core statistical metrics â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     def power(self, n):
         """Statistical power for ensemble of size n: P(reject H0 | H1 true)."""
@@ -48,7 +48,7 @@ class HypothesisTest:
 
     def alpha(self):
         """False-positive rate: probability of gate opening without signal.
-        Zero because p_dark ≈ 0 in ε=2 shielded membrane.
+        Zero because p_dark â‰ˆ 0 in Îµ=2 shielded membrane.
         """
         return 0.0
 
@@ -65,7 +65,7 @@ class HypothesisTest:
         p_success = self.power(n)
         return channel_capacity(p_success)
 
-    # ── Experimental prediction: ionic current ─────────────────
+    # â”€â”€ Experimental prediction: ionic current â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     def ionic_current(self, n, single_channel_current_pA=1.0, open_probability=1.0):
         """Predicted ionic current for ensemble size n.
@@ -80,7 +80,7 @@ class HypothesisTest:
         single_channel_current_pA : float
             Current through a single open ion channel (pA).
         open_probability : float
-            Probability that a triggered gate opens (≈ 1.0 for voltage-gated).
+            Probability that a triggered gate opens (â‰ˆ 1.0 for voltage-gated).
 
         Returns
         -------
@@ -123,10 +123,10 @@ def format_results(results):
 def compare_targets():
     """Compare Trp vs CCO target across ensemble sizes."""
     targets = {
-        "Trp (baseline)": 1.80e-5,
+        "Trp (baseline)": 1.34e-5,
         "Fe-S cluster": 6.5e-21 / 1e-18,  # ~0.0065
         "FMN": 3.0e-21 / 1e-18,            # ~0.003
-        "CCO (cytochrome)": 7.79e-4,
+        "CCO (cytochrome)": 5.92e-4,
     }
     print(f"\n{'='*70}")
     print(f"  TARGET COMPARISON: Minimum ensemble for 80% power")
@@ -143,11 +143,11 @@ if __name__ == "__main__":
     # Default: CCO target (our primary model)
     print(f"{'='*70}")
     print(f"  HYPOTHESIS TEST: Spatial Ensemble Gating")
-    print(f"  Per-core hit probability: 7.79e-4 (CCO target)")
+    print(f"  Per-core hit probability: 5.92e-4 (CCO target)")
     print(f"  False-positive rate (alpha): 0.0 (Z-channel)")
     print(f"{'='*70}")
 
-    ht = HypothesisTest(p_per_core=7.79e-4)
+    ht = HypothesisTest(p_per_core=5.92e-4)
     results = ht.current_sweep()
     format_results(results)
 
@@ -167,6 +167,7 @@ if __name__ == "__main__":
     print(f"  ultrafast UV laser pulses of varying intensity (N cores).")
     print(f"  Measured ionic current I(N) should follow:")
     print(f"    I(N) = N * p_open * I_single")
-    print(f"  where p_open = 1 - (1 - 7.79e-4)^N")
+    print(f"  where p_open = 1 - (1 - 5.92e-4)^N")
     print(f"  This curve is distinct from classical linear summation.")
     print(f"  At N=5,000: I ~ 4.9 pA per synchronised burst.")
+

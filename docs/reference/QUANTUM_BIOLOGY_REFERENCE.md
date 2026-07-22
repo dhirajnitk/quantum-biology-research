@@ -1893,6 +1893,62 @@ The raw PDB results completely shield the paper from standard critiques against 
 
 This is the lock and key of the Parallel Spatial Asymmetric Grid: the PDB geometry is the lock, and the macro clock is the key.
 
+### 11.5.3 The Geometry Tax: Symmetry vs. Molecular Complexity
+
+The KCKAS scores across targets reveal a clear ranking that maps directly onto structural complexity:
+
+```
+ [ 1BL8: 1.97 ] ────► [ 6PV7: 1.92 ] ────► [ 7TYO: 1.81 ] ────► [ 6LQA: 1.72 ]
+ Pure Symmetry        Complex Loop         Massive Hinge        Asymmetric Core
+ (Bacterial K+)       (nAChR Receptor)     (NMDA Synaptic)      (Human NaV 1.7)
+
+```
+
+**1BL8 (KcsA) at S = 1.97** — The potassium channel is a homotetramer: four identical subunits in perfect ring symmetry. Its Trp arrays repeat flawlessly, spatial disorder is minimal, and the deep hydrophobic girdle at the lipid interface keeps the dielectric pristine. It is naturally poised at the edge of the quantum portal because its crystalline symmetry protects it.
+
+**6PV7 (nAChR) at S = 1.92** — The nicotinic acetylcholine receptor is a pentameric ligand-gated channel. Its Trp networks sit in the agonist-binding pocket, but the bulky extracellular domain introduces structural fluctuations that push inter-Trp distances wider.
+
+**7TYO (NMDA) at S = 1.81** — The NMDA receptor is a massive multi-domain complex with large looping protein gates exposed to water. Trp highways are interrupted by moving structural hinges, pushing average inter-residue distances to 40-60 Å.
+
+**6LQA (NaV) at S = 1.72** — The human voltage-gated sodium channel is the ultimate asymmetric system. Unlike KcsA's four identical subunits, NaV is one continuous protein chain folded into four different domains. The Trp vertical string is structurally distorted, dropping the baseline score to 1.72.
+
+**The evolutionary principle:** Biology pays a "geometry tax" for complex functionality. Ancient, symmetrical channels are naturally poised for quantum coherence. Advanced human receptors sacrifice this native static poise to build intricate computing hinges — making them completely dependent on the Layer 3 macro clock to function. A simple K⁺ channel needs only a whisper from the brainwaves to cross the classical line; a human NMDA synapse requires a powerful, coordinated phase-synchronized engine to turn its complex lock.
+
+## 11.6 Paper Roadmap
+
+The research program targets five publications progressing from theoretical framework to ML integration.
+
+### P0: Sub-Tubular Quantum Information Processing (Theoretical Framework)
+
+- **Status:** Manuscript complete
+- **Target journal:** Physical Review E
+- **File:** `papers/sub_tubulin_manuscript/manuscript.tex`
+- **Core contribution:** Multi-scale architecture for neural computation via Trp networks, Z-channel model, KCKAS contextuality on 10 PDB targets, Hamiltonian engine with clock-driven coherence rescue, geometry tax.
+
+### P1: Quantum Mutual Information in FMO Energy Transfer
+
+- **Status:** In planning
+- **Target journal:** Journal of Chemical Physics
+- **Core contribution:** Compute I(ρ_i, ρ_j) for all chromophore pairs in the FMO complex as a function of dephasing rate. Identify optimal information flow topology and compare with energy transfer efficiency.
+
+### P2: Quantum Darwinism in Photosynthetic Energy Transfer
+
+- **Status:** In planning
+- **Target journal:** New Journal of Physics
+- **Core contribution:** Compute pointer states, redundancy R(δ), and spectrum broadcast structure (SBS) for the FMO complex under physiological decoherence. Test if FMO exhibits quantum Darwinism.
+
+### P3: Thermodynamic Cost of Quantum Coherence in Photosynthesis
+
+- **Status:** In planning
+- **Target journal:** Physical Review E or PRX Life
+- **Core contribution:** Compute entropy production rate during FMO energy transfer. Compare quantum vs. classical transport efficiency. Determine if quantum biology is energetically worthwhile.
+
+### P4: Machine Learning Prediction of Quantum Transport from Protein Structure
+
+- **Status:** In planning
+- **Target journal:** npj Quantum Information
+- **Core contribution:** Train graph neural network on PDB structures + QuTiP trajectory data to predict exciton transfer efficiency, coherence lifetime, and optimal dephasing rate from structural features alone.
+
 # Appendix
 
 ## A.1 Glossary of Terms

@@ -1,5 +1,5 @@
 """
-manuscript_compiler.py  —  Multi-structure comparative analysis for publication.
+manuscript_compiler.py  â€”  Multi-structure comparative analysis for publication.
 
 Integrates all analysis modules (Trp extraction, spatial ensemble, KCKAS
 contextuality, CHSH Bell test, Z-channel capacity) into a single
@@ -20,13 +20,13 @@ import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 from src.pdb_tools.trp_extractor import fetch_pdb, extract_trp_coordinates, distance_matrix
-from src.core.biophoton_relay import BiophotonRelay, channel_capacity, THERMAL_SUPPRESSION
+from src.core.biophoton_relay import BiophotonRelay, z_channel_capacity as channel_capacity
 from src.analysis.pdb_contextuality import compute_kckas_from_pdb, KCKAS_CLASSICAL_BOUND, KCKAS_QUANTUM_BOUND
 from src.analysis.pdb_bell_test import compute_chsh_from_pdb
 from src.analysis.z_channel_capacity import ensemble_gap_to_shannon
 
-# ── Master target list ─────────────────────────────────────────────
-# Each entry: PDB ID → metadata for the manuscript table
+# â”€â”€ Master target list â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# Each entry: PDB ID â†’ metadata for the manuscript table
 TARGETS = [
     # (pdb_id, name, class, dielectric)
     ("6CNO",  "NMDA receptor GluN1/GluN2B",  "Ligand-gated ion channel", 2.1),
@@ -113,11 +113,11 @@ def analyse_target(pdb_id, name, pdb_class, dielectric):
 def compile_manuscript_table(targets):
     """Analyse all targets and format the manuscript data matrix."""
     print("=" * 100)
-    print("  MANUSCRIPT DATA MATRIX — Comparative Structural Analysis")
+    print("  MANUSCRIPT DATA MATRIX â€” Comparative Structural Analysis")
     print("  Targets: ligand-gated ion channels, voltage-gated, synaptic, cytoskeletal")
     print("=" * 100)
 
-    # ── Table 1: Structural properties ──────────────────────────
+    # â”€â”€ Table 1: Structural properties â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     print(f"\n  TABLE 1: Structural Properties of Neural Trp Networks")
     print(f"  {'PDB':<6} {'Name':<30} {'Class':<30} {'Trp':<5} {'Coupled':<8} {'Relay':<8} {'Dist(A)':<8} {'Dielec':<8}")
     print(f"  {'-'*6} {'-'*30} {'-'*30} {'-'*5} {'-'*8} {'-'*8} {'-'*8} {'-'*8}")
@@ -129,7 +129,7 @@ def compile_manuscript_table(targets):
             results.append(r)
             print(f"  {r['pdb_id']:<6} {r['name'][:28]:<30} {r['class'][:28]:<30} {r['n_trp']:<5} {r['coupled_pairs']:<8} {r['relay_pairs']:<8} {r['mean_distance_A']:<8.1f} {r['dielectric']:<8.1f}")
 
-    # ── Table 2: Quantum signatures ─────────────────────────────
+    # â”€â”€ Table 2: Quantum signatures â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     print(f"\n  TABLE 2: Quantum Contextuality & Bell-CHSH Signatures")
     print(f"  {'PDB':<6} {'KCKAS S':<10} {'F_coh':<8} {'Violation':<12} {'CHSH S':<10} {'Status':<20}")
     print(f"  {'-'*6} {'-'*10} {'-'*8} {'-'*12} {'-'*10} {'-'*20}")
@@ -140,15 +140,15 @@ def compile_manuscript_table(targets):
         status = f"{kckas_status}, {chsh_status}"
         print(f"  {r['pdb_id']:<6} {r['kckas_S']:<10.4f} {r['kckas_F_coh']:<8.4f} {r['kckas_violation']:<12.4f} {r['chsh_S']:<10.4f} {status:<20}")
 
-    # ── Table 3: Spatial ensemble gating ─────────────────────────
-    print(f"\n  TABLE 3: Z-Channel Gating — Spatial Ensemble Thresholds")
+    # â”€â”€ Table 3: Spatial ensemble gating â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    print(f"\n  TABLE 3: Z-Channel Gating â€” Spatial Ensemble Thresholds")
     print(f"  {'PDB':<6} {'p/core':<12} {'N_95%':<10} {'P@1k':<10} {'P@5k':<10} {'P@10k':<12} {'C(5k)':<10} {'Gap to Sh.':<12}")
     print(f"  {'-'*6} {'-'*12} {'-'*10} {'-'*10} {'-'*10} {'-'*12} {'-'*10} {'-'*12}")
 
     for r in results:
         print(f"  {r['pdb_id']:<6} {r['p_per_core']:<12.2e} {r['N_95']:<10} {r['p_1000']*100:<8.1f}% {r['p_5000']*100:<8.1f}% {r['p_10000']*100:<8.1f}% {r['z_capacity_5000']:<10.4f} {r['z_gap_to_shannon']:<12.6f}")
 
-    # ── Summary statistics ──────────────────────────────────────
+    # â”€â”€ Summary statistics â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     print(f"\n  SUMMARY")
     n_contextual = sum(1 for r in results if r['kckas_S'] > KCKAS_CLASSICAL_BOUND)
     n_total = len(results)
@@ -169,3 +169,4 @@ def compile_manuscript_table(targets):
 
 if __name__ == "__main__":
     results = compile_manuscript_table(TARGETS)
+

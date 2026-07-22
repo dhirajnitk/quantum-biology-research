@@ -16,7 +16,6 @@ References
 """
 
 import os
-import json
 import numpy as np
 import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -210,7 +209,7 @@ def query_node(pdb_id):
 if __name__ == "__main__":
     import sys
     sys.path.insert(0, os.path.join(os.path.dirname(__file__)))
-    from biophoton_relay import BiophotonRelay, channel_capacity, THERMAL_SUPPRESSION
+    from biophoton_relay import BiophotonRelay, z_channel_capacity as channel_capacity, THERMAL_SUPPRESSION
 
     # Analyse all targets from PDB
     for pdb_id in NEURAL_TARGETS:

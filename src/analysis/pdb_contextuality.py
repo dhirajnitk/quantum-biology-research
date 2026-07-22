@@ -27,7 +27,7 @@ References
 
 import numpy as np
 from numpy import pi, cos, sin, sqrt, dot, trace, outer, real, conj, exp
-from numpy.linalg import norm, eig
+from numpy.linalg import norm, eig, eigh
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 from src.pdb_tools.trp_extractor import fetch_pdb, extract_trp_coordinates, distance_matrix
@@ -186,15 +186,17 @@ def compute_kckas_from_pdb(pdb_id, chain=None, phi_offset=0.0):
     F_coh = 1.0 - exp(-max(J_avg, 0) / J_threshold)
     F_coh = max(min(F_coh, 1.0), 0.0)
 
-    # Build the quantum state and projectors
-    psi = np.array([1.0, 0.0, 0.0])
-    rho = outer(psi, psi)
+    # Build projectors and find the optimal quantum state
     vectors = build_projectors(phi_offset)
+    projectors = [outer(v, v) for v in vectors]
+    P_sum = sum(projectors)
+    evals, evecs = eigh(P_sum)
+    psi_opt = evecs[:, np.argmax(evals)]
+    rho = outer(psi_opt, psi_opt.conj())
 
     # Compute KCKAS sum with coherence scaling
     probabilities = []
-    for v_i in vectors:
-        P_i = outer(v_i, v_i)
+    for P_i in projectors:
         prob = real(trace(dot(rho, P_i))) * F_coh
         probabilities.append(max(min(prob, 1.0), 0.0))
 

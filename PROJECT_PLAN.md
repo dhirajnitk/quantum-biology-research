@@ -28,8 +28,8 @@
 | 11.2 | Phase Synchronization for Complex Routing | ✅ Complete |
 | 11.3 | Open Questions | ✅ Complete |
 | 11.4 | The Virtual Lab: Implementation Roadmap | ✅ Complete |
-| 11.5 | Simulation Pipeline | 🔴 Needs writing |
-| 11.6 | Paper Roadmap | 🔴 Needs writing |
+| 11.5 | Geometrically Sub-Threshold Quantum Vault | ✅ Complete |
+| 11.6 | Paper Roadmap | ✅ Complete |
 
 **Other files in repository:**
 
@@ -121,41 +121,48 @@ quantum_biological_toolkit/
 
 ## 4. Immediate Next Steps
 
-### Step 1 — PDB Tryptophan Extraction Script (1-2 days)
+### ~~Step 1 — PDB Tryptophan Extraction Script (1-2 days)~~ ✅ COMPLETE
 
-- Use Biopython to fetch real PDB structures (target: 7TYO = NMDA receptor)
-- Extract all Trp residue coordinates
-- Compute inter-Trp distance matrix
-- Classify each pair as "coupled" (< 1.5 nm) or "optical relay" (> 1.5 nm)
+- `src/pdb_tools/trp_extractor.py` — fetches PDB, extracts Trp CG coordinates, computes distance matrix
+- Classifies pairs: "coupled" (< 1.5 nm) or "optical relay" (> 1.5 nm)
+- `src/pdb_tools/batch_processor.py` — batch analysis across 63 curated membrane proteins
 
-### Step 2 — Real Hamiltonian from PDB Distances (2-3 days)
+### ~~Step 2 — Real Hamiltonian from PDB Distances (2-3 days)~~ ✅ COMPLETE
 
-- Replace the mock 4×4 Hamiltonian in `QuantumOpticalGateway` with one computed from actual Trp distances
-- Coupling strength: `J_ij ∝ 1 / R_ij³` (Dexter) + dipole orientation factor
+- `QuantumOpticalGateway` updated with PDB-based Hamiltonian (J_ij ∝ 1/R_ij³)
+- `HamiltonianEngine` implements H_total = H_PDB + H_clock(A)
+- Clock drive adds J_clock(R) = A × 400 × exp(-R/15) cm⁻¹
+- All 8 PDB targets breach classical bound (S > 2.0) under full clock drive
 
-### Step 3 — Connect Simulation to Document (1 day)
+### ~~Step 3 — Connect Simulation to Document (1 day)~~ ✅ COMPLETE
 
-- Add Section 11.5 documenting both simulation modules
-- Add Section 11.6 with the paper roadmap
+- Section 11.5 (Geometrically Sub-Threshold Quantum Vault) added to reference doc
+- `README.md` updated with full repository structure and research summary
+- `RESEARCH_SUMMARY.md` written with complete results tables
+- `PROJECT_PLAN.md` updated with all completed milestones
+- Physical Review E manuscript at `papers/sub_tubulin_manuscript/manuscript.tex` with 4 figures
+- All source modules documented with docstrings and references
 
-### Decision Point
+### Decision Point ✅ RESOLVED — P0 first
 
-The #1 choice is whether to write the **Sub-Tubulin theory paper (P0)** first as a pure theoretical framework, or jump straight into **FMO-based computational papers (P1-P4)** using established protein data.
+The Sub-Tubulin theory paper (P0) is complete as a manuscript draft targeting Physical Review E. The decision was made to establish the novel hypothesis first as a pure theoretical framework before pursuing FMO-based computational papers.
 
-- **P0 first** — Establishes your novel hypothesis; positions you as a theorist.
-- **P1-P4 first** — Builds publication record with tractable simulations; defers high-risk theory.
+## 5. Completed Milestones
 
----
+| # | Milestone | Status | Deliverable |
+|---|-----------|--------|-------------|
+| M1 | PDB Trp extractor running on NMDA receptor | ✅ | `trp_extractor.py` + distance map |
+| M2 | Hamiltonian computed from real structural data | ✅ | Updated `QuantumOpticalGateway`, `HamiltonianEngine` |
+| M3 | P0 manuscript drafted | ✅ | `manuscript.tex` + 4 figures |
+| M4 | Reference document complete (Parts I-XI) | ✅ | `QUANTUM_BIOLOGY_REFERENCE.md` |
 
-## 5. Key Milestones
+## 6. Next Milestones
 
-| # | Milestone | Date | Deliverable |
-|---|-----------|------|-------------|
-| M1 | PDB Trp extractor running on NMDA receptor | Week 2 | `trp_extractor.py` + distance map |
-| M2 | Hamiltonian computed from real structural data | Week 3 | Updated `QuantumOpticalGateway` |
-| M3 | P0 submitted to arXiv | Week 8 | Manuscript + figures |
-| M4 | FMO ENAQT curve reproduced | Week 4 | Jupyter notebook |
-| M5 | P1 submitted to arXiv | Month 6 | Manuscript |
-| M6 | P2 submitted to arXiv | Month 9 | Manuscript |
-| M7 | P3 submitted to arXiv | Month 10 | Manuscript |
-| M8 | P4 submitted to arXiv | Month 12 | Manuscript + code release |
+| # | Milestone | Timeline | Deliverable |
+|---|-----------|----------|-------------|
+| M5 | Submit P0 to arXiv | Next 2 weeks | Manuscript + supplementary code |
+| M6 | Revise for journal submission | Month 1-2 | Address referee feedback |
+| M7 | P1: QMI in FMO | Month 3-6 | Computations + manuscript |
+| M8 | P2: Quantum Darwinism | Month 6-9 | Computations + manuscript |
+| M9 | P3: Thermodynamic cost | Month 7-10 | Computations + manuscript |
+| M10 | P4: ML for quantum transport | Month 9-12 | Computations + manuscript |

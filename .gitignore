@@ -9,6 +9,20 @@ __pycache__/
 # IDE files
 .idea/
 
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.spl
+*.synctex.gz
+*Notes.bib
+
 # OS files
 .DS_Store
 Thumbs.db
+
+src/ml/training_results.pkl
+src/ml/best_mlp.pt
+src/ml/training_log.txt

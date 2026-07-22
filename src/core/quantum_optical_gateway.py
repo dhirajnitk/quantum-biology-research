@@ -15,7 +15,10 @@ References
 """
 
 import numpy as np
+from numpy import exp
 from qutip import Qobj, basis, mesolve, ket2dm, entropy_vn
+import sys, os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 # ---------------------------------------------------------------------------
 #  Physical constants
@@ -47,43 +50,85 @@ class QuantumOpticalGateway:
         Bath cutoff frequency [cm⁻¹]; controls Markovianity.
     """
 
-    def __init__(self, num_sites=4, epsilon=2.0, temperature=310.0,
-                 lam=35.0, cutoff=53.0):
-        self.N = num_sites
+    def __init__(self, num_sites=None, epsilon=2.0, temperature=310.0,
+                 lam=35.0, cutoff=53.0, pdb_id=None, chain=None):
         self.eps = epsilon
         self.T = temperature
-        self.lam = lam * (epsilon / 2.0)          # reorg  ∝  ε
-        self.gamma_c = cutoff * CM1_TO_RADS       # → rad/s
+        self.lam = lam * (epsilon / 2.0)
+        self.gamma_c = cutoff * CM1_TO_RADS
         self.kT = KB * temperature
+        self.pdb_id = pdb_id
 
         # -------------------------------------------------------------------
-        #   Tight-binding Hamiltonian [cm⁻¹]
-        #   Site energies and couplings typical of a Trp-helix bundle.
-        #   Electrostatic screening:  H_coupling  →  H_coupling / √ε
+        #   Hamiltonian [cm⁻¹] — from PDB if requested, otherwise mock 4×4
         # -------------------------------------------------------------------
-        H_cm = np.array([
-            [  0.0, -80.0,   5.0,   0.0],
-            [-80.0, 110.0, -40.0,   2.0],
-            [  5.0, -40.0, 210.0, -75.0],
-            [  0.0,   2.0, -75.0,  50.0],
-        ])
-        # scale only the off-diagonal (coupling) elements
-        mask_off = np.ones_like(H_cm, dtype=bool)
-        np.fill_diagonal(mask_off, False)
-        H_cm[mask_off] /= np.sqrt(epsilon)
+        if pdb_id:
+            from src.pdb_tools.trp_extractor import (fetch_pdb,
+                extract_trp_coordinates, distance_matrix)
+            text = fetch_pdb(pdb_id)
+            if text:
+                centres = extract_trp_coordinates(text, chain)
+                if len(centres) >= 2:
+                    D, keys = distance_matrix(centres)
+                    self.N = len(keys)
+                    self.trp_residues = keys
+                    self._build_hamiltonian_from_pdb(D, keys)
+                else:
+                    self.N = num_sites or 4
+                    self.trp_residues = []
+                    self._build_mock_hamiltonian()
+            else:
+                self.N = num_sites or 4
+                self.trp_residues = []
+                self._build_mock_hamiltonian()
+        else:
+            self.N = num_sites or 4
+            self.trp_residues = []
+            self._build_mock_hamiltonian()
 
-        # convert to angular-frequency units (rad/s) for QuTiP
+        self._build_lindblad_ops()
+        n_lipid = 1.45
+        self.v_optical = C0 / n_lipid
+
+    def _build_mock_hamiltonian(self):
+        """Fallback N×N mock Hamiltonian with nearest-neighbour couplings."""
+        np.random.seed(42)
+        H_cm = np.zeros((self.N, self.N))
+        for i in range(self.N):
+            H_cm[i, i] = float(i * 80) + np.random.normal(0, 30)
+        for i in range(self.N):
+            for j in range(i + 1, self.N):
+                J_ij = -80.0 * (10.0 / (8.0 + 2.0 * abs(i - j))) ** 3
+                H_cm[i, j] = H_cm[j, i] = J_ij / np.sqrt(self.eps)
         self.H = Qobj(H_cm * CM1_TO_RADS)
 
-        # -------------------------------------------------------------------
-        #  Lindblad collapse operators
-        #
-        #  1. Pure dephasing at each site  —  kills off-diagonals
-        #  2. Thermal relaxation  —  drives populations toward Boltzmann
-        #  3. Trapping (optional)  —  models energy exiting to reaction centre
-        # -------------------------------------------------------------------
-        #  High-temperature Markovian dephasing rate  (ENAQT expression)
-        #    γ_φ(T) = 2π (kT/ℏ) (λ / ω_c)
+    def _build_hamiltonian_from_pdb(self, D, keys):
+        """Build tight-binding Hamiltonian from real PDB Trp distances.
+
+        Coupling: J_ij = J0 * (R0 / R_ij)³  (Dexter-like)
+        Site energies: E_i = baseline + static disorder
+        Off-diagonal scaled by 1/√ε (dielectric screening).
+        """
+        n = len(keys)
+        J0 = -80.0                     # cm⁻¹ at R0 = 10 Å
+        R0 = 10.0                      # reference distance in Å
+        disorder_std = 30.0            # cm⁻¹ static disorder
+
+        H_cm = np.zeros((n, n))
+        for i in range(n):
+            H_cm[i, i] = float(i * 80) + np.random.normal(0, disorder_std)
+        for i in range(n):
+            for j in range(i + 1, n):
+                if D[i, j] > 0.1:
+                    J_ij = J0 * (R0 / D[i, j]) ** 3
+                    H_cm[i, j] = H_cm[j, i] = J_ij / np.sqrt(self.eps)
+        self.H = Qobj(H_cm * CM1_TO_RADS)
+
+    def _build_lindblad_ops(self):
+        """Build Lindblad collapse operators for dephasing and relaxation.
+        High-temperature Markovian dephasing rate (ENAQT expression):
+            γ_φ(T) = 2π (kT/ℏ) (λ / ω_c)
+        """
         gamma_phi = (2 * np.pi * self.kT / HBAR) * (self.lam / self.gamma_c)
 
         self.c_ops = []
@@ -98,12 +143,6 @@ class QuantumOpticalGateway:
             # |i⟩ → |0⟩  (energy relaxation to lowest site)
             decay_op = np.sqrt(gamma_relax) * basis(self.N, 0) * basis(self.N, i).dag()
             self.c_ops.append(decay_op)
-
-        # -------------------------------------------------------------------
-        #  Optical transit velocity  —  lipid membrane waveguide
-        # -------------------------------------------------------------------
-        n_lipid = 1.45         # refractive index of lipid bilayer core
-        self.v_optical = C0 / n_lipid
 
     # ------------------------------------------------------------------
     #  Public API
@@ -121,8 +160,8 @@ class QuantumOpticalGateway:
                  for i in range(self.N)]
         e_ops += [self.H]   # track energy expectation
 
-        result = mesolve(self.H, rho0, tlist, self.c_ops, e_ops,
-                         progress_bar=True)
+        result = mesolve(self.H, rho0, tlist, c_ops=self.c_ops, e_ops=e_ops,
+                         options={'store_states': True})
         return result
 
     @staticmethod

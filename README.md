@@ -1,60 +1,52 @@
-# Sub-Tubulin Quantum Information Processing
+# Structural Constraints on Energy Transfer in Neural Tryptophan Networks
 
-A theoretical and computational framework for understanding how quantum-coherent information processing occurs within intramolecular Tryptophan (Trp) networks buried inside individual synaptic proteins — the **sub-tubulin hypothesis**.
+A computational analysis of the physical limits of energy transfer in neural tryptophan (Trp) networks, based on 20 PDB structures, with a two-regime characterization of non-radiative FRET vs. free-space radiative coupling.
+
+## Preprint
+
+A preprint of this manuscript is archived at Zenodo:
+**DOI: [10.5281/zenodo.21478163](https://doi.org/10.5281/zenodo.21478163)**
 
 ## Repository Structure
 
 ```
-├── docs/
-│   ├── reference/QUANTUM_BIOLOGY_REFERENCE.md   # Main reference (Parts I-XI)
-│   ├── architecture/                            # Narrative essay
-│   └── research_plan/                           # 12-section research plan
+├── papers/
+│   ├── p0_sub_tubulin/               # Main manuscript (PRE target)
+│   │   ├── sub_tubular_quantum.tex
+│   │   └── generate_figures.py
+│   ├── p1_fmo_qmi/                   # Quantum Mutual Information in FMO
+│   ├── p2_quantum_darwinism/         # Quantum Darwinism in FMO
+│   ├── p3_thermodynamics/            # Thermodynamic cost of coherence
+│   └── p4_ml_transport/             # ML prediction of quantum transport
 ├── src/
-│   ├── pdb_tools/                               # PDB fetching and Trp extraction
+│   ├── pdb_tools/                    # PDB fetching and Trp extraction
 │   │   ├── trp_extractor.py
 │   │   └── batch_processor.py
-│   └── core/                                    # Simulation engine
-│       ├── quantum_optical_gateway.py           # QuTiP Lindblad simulation
-│       └── quantum_optical_gateway_simple.py    # Pedagogical NumPy version
-├── papers/
-│   └── p0_sub_tubulin/outline.md                # P0 paper outline
-├── data/
-│   ├── cache/                                   # PDB structure cache (gitignored)
-│   └── *_batch.csv                              # Batch analysis results
-├── PROJECT_PLAN.md
+│   ├── core/                         # Simulation engine
+│   │   ├── biophoton_relay.py        # Biophoton relay calculations
+│   │   ├── quantum_optical_gateway.py
+│   │   └── hamiltonian.py
+│   ├── analysis/                     # Analysis modules
+│   │   └── z_channel_capacity.py     # Shannon-optimal energy model
+│   └── simulations/                  # Monte Carlo validation
+│       ├── monte_carlo_validation.py
+│       └── run_batch_analysis.py
+├── DATA_SOURCES.md
 └── README.md
 ```
 
-## Core Hypothesis
+## Core Result
 
-The human brain's 20-watt efficiency cannot be explained by classical action potentials alone. Quantum-coherent information processing occurs within **1-5 nm hydrophobic protein pockets** containing dense Tryptophan aromatic networks. These serve as ultra-fast local quantum filters, communicating via near-infrared biophoton emission guided by lipid membrane waveguides — all synchronized by macro-scale electrical rhythms.
+Free-space radiative Trp-to-Trp energy transfer is infeasible (p ≈ 1.8×10⁻⁵ per exciton) due to UV tissue attenuation and spectral mismatch. Sub-1.5 nm non-radiative FRET coupling is structurally viable, with coupling strengths of J ≈ 150-300 cm⁻¹ for the closest Trp pairs in fast-signaling ion channels.
 
-## Key Claims
+## Key Results
 
-1. **Trp networks** in hydrophobic protein cores maintain 50-100 fs coherence (shielded by ε ≈ 2 dielectric)
-2. **Biophoton emission** (600-1300 nm) relays quantum outputs between cores via lipid waveguide
-3. **Multi-scale clock hierarchy** (Hz → ps → fs) phase-synchronizes billions of independent filters
-4. **Observability crossover** — Trp networks are spectroscopically verifiable (unlike nuclear spin models)
-
-## Related Research Groups & Published Data
-
-Several labs are producing directly relevant experimental data:
-
-| Group | Key Finding | Year |
-|-------|-------------|------|
-| **Babcock, Kurian et al.** (NIH/Howard) | UV superradiance from mega-networks of Trp in microtubules & amyloids; collective quantum states survive at room temperature | 2024 |
-| **Gassab, Craddock et al.** | HEOM on tubulin Trp networks (~13 fs dephasing at 310K); quantum information flow in Trp networks | 2026 |
-| **Firmenich et al.** | Rigorous non-perturbative HEOM on 1JFF tryptophan network; introduced equilibrium-to-functionality gap | 2026 |
-| **Patwa, Kurian et al.** | Quantum-enhanced photoprotection in Trp neuroprotein architectures; subradiant dark states | 2024 |
-| **Xin et al.** | Molecular dynamics-derived coloured noise mediates ENAQT of Trp excitons in tubulin | 2026 |
-| **Echternach** | Geometric foundations for collective quantum phenomena in microtubules; nanophotonic analogs | 2025-2026 |
-
-**Key papers:**
-- Babcock et al. (2024) *J. Phys. Chem. Lett.* — UV superradiance from Trp mega-networks
-- Patwa et al. (2024) *Frontiers in Physics* — Quantum-enhanced photoprotection in Trp architectures
-- Gassab et al. (2026) *Entropy* — Quantum information flow in microtubule Trp networks
-- Firmenich et al. (2026) *bioRxiv* — HEOM on tubulin Trp networks
-- Gassab & Craddock (2026) *J. Phys. Photonics* — Optical properties of cytoskeleton
+1. **20 PDB targets analyzed** — 18 contain 3–27 Trp residues with 1–28 quantum-coupled pairs
+2. **Free-space infeasibility** — Trp-to-Trp radiative transfer p ≈ 1.8×10⁻⁵ per exciton; spectral mismatch between Trp UV emission (~320–350 nm) and acceptor NIR absorption (~600–850 nm)
+3. **Two-regime analysis** — non-radiative FRET dominates at sub-1.5 nm (efficiency >0.90 for closest pairs); free-space fails beyond 2 nm
+4. **Hypothetical channel constraints** — if optical coupling existed, N ≈ 5,000 cores could achieve P_success ≈ 98% with E_bit ≈ 1.85×10⁻¹⁵ J (~16× more efficient than CMOS)
+5. **KCKAS contextuality scores** — static S ≤ 1.97 for all targets; classical bound S=2 not breached without active driving
+6. **SDP verification** — S_max = √5 ≈ 2.236 confirmed via convex optimization
 
 ## Getting Started
 
@@ -62,27 +54,22 @@ Several labs are producing directly relevant experimental data:
 # Extract Trp networks from a PDB structure
 python src/pdb_tools/trp_extractor.py 7TYO --save
 
-# Batch analyse 63 curated membrane proteins
-python src/pdb_tools/batch_processor.py
+# Run biophoton relay calculation
+python -c "from src.core.biophoton_relay import BiophotonRelay; r = BiophotonRelay(10.0); print(r.spatial_ensemble_success(5000, target_type='cco'))"
 
-# Run the Quantum-Optical Gateway simulation
-python src/core/quantum_optical_gateway.py
+# Run Monte Carlo validation
+python src/simulations/monte_carlo_validation.py
+
+# Run Shannon-optimal energy model
+python src/analysis/z_channel_capacity.py
 ```
 
-## Dataset
+## Compiling Manuscripts
 
-Currently analysing 63 curated membrane proteins from PDB (ion channels, GPCRs, transporters, aquaporins). The curated list spans:
-
-- **Voltage-gated ion channels:** NaV, CaV, KV, KcsA
-- **Ligand-gated ion channels:** NMDA, nAChR, GABA-A, GlyR, P2X
-- **GPCRs:** Rhodopsin, β2-adrenergic, adenosine, opioid, cannabinoid
-- **Transporters:** SERT, DAT, GLUT
-- **Water channels:** Aquaporins
-- **Junction proteins:** Connexins, TRPV
-
-## Status
-
-Active theoretical research. All code runs on a standard laptop with Python + QuTiP. No wet lab required.
+```bash
+cd papers/p0_sub_tubulin
+pdflatex sub_tubular_quantum.tex && pdflatex sub_tubular_quantum.tex
+```
 
 ## License
 

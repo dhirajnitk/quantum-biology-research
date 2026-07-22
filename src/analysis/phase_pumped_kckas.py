@@ -1,6 +1,12 @@
 """
 phase_pumped_kckas.py  —  Multi-scale hierarchy simulator.
 
+DEPRECATED: Use quantum_hamiltonian_engine.py instead.
+This module uses a linear clock-drive model that yields S values
+inconsistent with the physically-grounded HamiltonianEngine.
+Kept for reference; the canonical implementation is in
+quantum_hamiltonian_engine.py.
+
 Models how an external macro-scale phase-driving parameter (Gamma_clock)
 actively rescues real sub-threshold PDB spatial configurations, pumping
 the KCKAS contextuality sum past the classical barrier (S > 2.0).
