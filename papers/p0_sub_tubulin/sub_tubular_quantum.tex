@@ -1,5 +1,5 @@
 ﻿%% Manuscript for Physical Review E
-%% Sub-Tubular Quantum Information Processing in Neural Tryptophan Networks
+%% Physical Boundaries of Biological Tryptophan Networks
 %% Revised and expanded version
 
 \documentclass[aps,pre,twocolumn,showpacs,superscriptaddress]{revtex4-2}
@@ -45,39 +45,38 @@ We analysed 20 cryo-EM and X-ray structures from the Protein Data Bank (PDB), sp
 Table~\ref{tab:structural} summarises the Trp network topology of each target.
 
 \begin{table*}[htbp]
-\caption{Structural properties of Trp networks in 20 proteins. ``Coupled pairs'' have $R < 1.5$~nm; ``relay pairs'' have $1.5 \leq R \leq 5$~nm. Two targets (6J4K, 6Z0C) lacked sufficient Trp density for analysis. Human brain proteins are marked with $\dagger$. Pair counts near the $1.5$~nm cutoff have an estimated $\pm 0.3$~nm boundary uncertainty due to side-chain rotamers; for targets with asymmetric distance distributions near the cutoff, the resulting uncertainty range is reported as asymmetric (e.g., Rhodopsin $28^{+3}_{-11}$). The uncertainties on coupled and relay pairs are anti-correlated: a pair that crosses the $1.5$~nm boundary in one direction changes the coupled count by $\pm1$ and the relay count by $\mp1$, conserving the total $\binom{N}{2}$ pair sum.}
+\caption{Structural properties of Trp networks in 19 proteins. ``Coupled pairs'' have $R < 1.5$~nm; ``relay pairs'' have $1.5 \leq R \leq 5$~nm. Four targets with $<2$ Trp lacked sufficient density for pair analysis. Human brain proteins are marked with $\dagger$. Pair counts near the $1.5$~nm cutoff have an estimated $\pm 0.3$~nm boundary uncertainty due to side-chain rotamers. The uncertainties on coupled and relay pairs are anti-correlated: a pair crossing the $1.5$~nm boundary changes the coupled count by $\pm1$ and the relay count by $\mp1$, conserving the total $\binom{N}{2}$ pair sum.}
 \label{tab:structural}
 \centering
 \begin{tabular}{llcccc}
 \toprule
 PDB & Protein & Source & Trp & Coupled & Relay \\
 \midrule
-7TYO & NMDA receptor GluN1/GluN2A & Human brain$\dagger$ & 23 & $21\pm9$ & $115\pm9$ \\
-6CNO & NMDA receptor GluN1/GluN2B & Human brain$\dagger$ & 10 & $5\pm4$ & $30\pm4$ \\
-6V2W & GABA$_A$ receptor & Human brain$\dagger$ & 7 & $2\pm1$ & $14\pm1$ \\
-7KOX & $\alpha$7 nicotinic AChR & Human brain$\dagger$ & 12 & $4^{+8}_{-4}$ & $34\pm8$ \\
-6PLL & Glycine receptor & Human brain$\dagger$ & 3 & $3^{+0}_{-1}$ & $0^{+1}_{0}$ \\
-7T6L & $\mu$-opioid receptor & Human brain$\dagger$ & 10 & $5\pm1$ & $35\pm1$ \\
-7EIX & TRPV1 ion channel & Human (sensory)$\dagger$ & 11 & $7\pm5$ & $47\pm5$ \\
-7RJK & Aquaporin-4 & Human brain (glial)$\dagger$ & 3 & $1\pm1$ & $2\pm1$ \\
+6HUO & GABA$_A$ receptor $\alpha1\beta3\gamma2$ & Human brain$\dagger$ & 26 & $11\pm4$ & $314\pm4$ \\
+6IRA & NMDA receptor GluN1/GluN2A & Human brain$\dagger$ & 28 & $16\pm5$ & $362\pm5$ \\
+6AGF & Na$_V$1.4 sodium channel & Human (skeletal muscle) & 28 & $20\pm6$ & $358\pm6$ \\
+2BG9 & nACh receptor & \emph{T. marmorata} (electric ray) & 31 & $19\pm7$ & $446\pm7$ \\
+7KOX & $\alpha$7 nicotinic AChR & Human brain$\dagger$ & 12 & $4\pm2$ & $62\pm2$ \\
+3KG2 & AMPA receptor GluA2 & Rat (neural) & 12 & $3\pm2$ & $63\pm2$ \\
+2A79 & K$_V$1.2 potassium channel & Rat (neural) & 11 & $10\pm3$ & $45\pm3$ \\
+5C1M & $\mu$-opioid receptor & Human brain$\dagger$ & 9 & $3\pm2$ & $33\pm2$ \\
+6PM6 & Glycine receptor $\alpha1$ & Zebrafish & 7 & $3\pm2$ & $18\pm2$ \\
+5SVK & P2X$_3$ purinergic receptor & Human (sensory) & 4 & $1\pm1$ & $5\pm1$ \\
 \addlinespace
-6PV7 & nACh receptor & \emph{T. marmorata} (electric ray) & 26 & $22\pm11$ & $127\pm11$ \\
-6LQA & Na$_V$1.4 sodium channel & Human (skeletal muscle) & 25 & $18\pm10$ & $150\pm10$ \\
-6J8J & Na$_V$1.4 (alt. conform.) & Human (skeletal muscle) & 27 & $20\pm10$ & $141\pm10$ \\
-1YAG & SNARE complex & Rat (neural) & 6 & $3\pm2$ & $12\pm2$ \\
-7SQS & AMPA receptor GluA2 & Rat (neural) & 7 & $4\pm3$ & $17\pm3$ \\
-7S6M & K$_V$1.2 potassium channel & Rat (neural) & 11 & $2\pm2$ & $26\pm2$ \\
-1JFF & Tubulin $\alpha\beta$ dimer & Porcine (ubiquitous) & 5 & $1\pm1$ & $7\pm1$ \\
-3N2K & Tubulin $\alpha\beta$ dimer & Mammalian (ubiquitous) & 5 & $1\pm1$ & $7\pm1$ \\
+5GJV & Ca$_V$1.1 calcium channel & Rabbit (skeletal muscle) & 42 & $23\pm11$ & $838\pm11$ \\
+4PE5 & NMDA receptor GluN1/GluN2B & Rat (neural) & 18 & $10\pm4$ & $143\pm4$ \\
+1U19 & Rhodopsin & Bovine (retinal) & 5 & $2\pm1$ & $8\pm1$ \\
 1BL8 & KcsA K$^+$ channel & Bacterial & 5 & $3\pm1$ & $7\pm1$ \\
-6N5B & Rhodopsin & Bovine (retinal) & 17 & $28^{+3}_{-11}$ & $76\pm11$ \\
-6J4K & Ca$_V$1.1 calcium channel & Rabbit (skeletal muscle) & 1 & 0 & 0 \\
-6Z0C & P2X$_3$ purinergic receptor & Zebrafish & 1 & 0 & 0 \\
+3GD8 & Aquaporin-4 & Human brain (glial)$\dagger$ & 5 & $3\pm1$ & $7\pm1$ \\
+1JFF & Tubulin $\alpha\beta$ dimer & Porcine (ubiquitous) & 5 & $1\pm1$ & $9\pm1$ \\
+3N2K & Tubulin $\alpha\beta$ dimer & Mammalian (ubiquitous) & 5 & $1\pm1$ & $9\pm1$ \\
+3J5P & TRPV1 ion channel & Rat (sensory) & 5 & $1\pm1$ & $9\pm1$ \\
+1SFC & SNARE complex & Rat (neural) & 2 & $1\pm1$ & $0\pm0$ \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-Of the 20 targets surveyed, 18 contain 3--27 Trp residues with 1--28 quantum-coupled pairs, indicating that dense aromatic networks are common across diverse protein families. Trp network density correlates with signaling speed rather than tissue type: the fastest neural and neuromuscular synapses (nAChR, Na$_V$1.4, NMDA) have among the highest Trp counts, while slow-signaling channels (Ca$_V$1.1, P2X$_3$) lack them entirely. The two exceptions --- Ca$_V$1.1 and P2X$_3$ --- have only a single Trp each and form no coupled pairs. Trp network architecture may be associated with fast synaptic signaling rather than being a tissue-specific adaptation. The pair counts in Table~\ref{tab:structural} should be interpreted with a boundary uncertainty of approximately $\pm 0.3$~nm near the $1.5$~nm cutoff due to the CG atom proxy for the indole ring center (see Methods). For typical targets, this translates to an uncertainty of $\pm 1$--$11$ pairs in the coupled column, with the largest absolute uncertainties for targets with the most Trp residues.
+Of the 19 targets surveyed, 17 contain 4--42 Trp residues, with the number of quantum-coupled pairs per structure ranging from 1 to 23. Dense Trp networks are common across diverse protein families, but the relationship with signaling speed is more complex than a simple correlation: the fastest synapses (nAChR, Na$_V$1.4, NMDA) have high Trp counts (28--31), yet the slow Ca$_V$1.1 calcium channel has the highest Trp count in the dataset (42 Trp, 23 coupled pairs). Small signaling complexes such as SNARE (2 Trp, 1 coupled) and P2X$_3$ (4 Trp, 1 coupled) have minimal Trp networks. The pair counts in Table~\ref{tab:structural} should be interpreted with a boundary uncertainty of approximately $\pm 0.3$~nm near the $1.5$~nm cutoff due to the CG atom proxy for the indole ring center (see Methods). For typical targets, this translates to an uncertainty of $\pm 1$--$11$ pairs in the coupled column, with the largest absolute uncertainties for targets with the most Trp residues.
 
 \subsection{Proof of Free-Space Infeasibility}
 
@@ -207,7 +206,7 @@ Our work complements the cytoelectric coupling hypothesis by providing structura
 
 \subsubsection{The Membrane vs.\ Microtubule Debate}
 
-A central open question in quantum biology is whether functional quantum effects occur in microtubule lattices (the Orch-OR paradigm) or in membrane-associated protein networks. Our sub-tubular model places the quantum layer in hydrophobic pockets ($\varepsilon \approx 2$) of individual synaptic membrane proteins, not in the hollow microtubule core. The structural data supports this: 16 of 18 membrane-associated targets in our dataset (ion channels, receptors, GPCRs, transporters) contain dense Trp networks (the two exceptions, Ca$_V$1.1 and P2X$_3$, have only a single Trp each), while the microtubule proteins (1JFF, 3N2K) have only 5 Trp with 1 coupled pair each — among the lowest in the dataset. This is consistent with a direct comparison using the published Trp coordinate data from Babcock et al.~\cite{Babcock2024}: their 104-Trp tubulin assembly yields $J_{\max} = 19.6$~cm$^{-1}$, which is 5--20$\times$ weaker than the membrane protein targets in our dataset, confirming that ion channel Trp networks are more densely packed than microtubule lattices.
+A central open question in quantum biology is whether functional quantum effects occur in microtubule lattices (the Orch-OR paradigm) or in membrane-associated protein networks. Our sub-tubular model places the quantum layer in hydrophobic pockets ($\varepsilon \approx 2$) of individual synaptic membrane proteins, not in the hollow microtubule core. The structural data supports this: 16 of 17 membrane-associated targets in our dataset contain dense Trp networks ($\geq 3$ Trp residues), while the microtubule proteins (1JFF, 3N2K) have only 5 Trp with 1 coupled pair each — among the lowest in the dataset. The SNARE complex (1SFC) is the only membrane target with sparse Trp (2 Trp, 1 coupled pair), reflecting its minimal role as a fusion machinery core. This is consistent with a direct comparison using the published Trp coordinate data from Babcock et al.~\cite{Babcock2024}: their 104-Trp tubulin assembly yields $J_{\max} = 19.6$~cm$^{-1}$, which is 5--20$\times$ weaker than the membrane protein targets in our dataset, confirming that ion channel Trp networks are more densely packed than microtubule lattices.
 
 \subsubsection{HEOM Bottlenecks and Machine Learning Acceleration}
 
@@ -223,7 +222,7 @@ This analysis yields two results:
 
 \subsection{Cross-Species Patterns}
 
-The 20-target dataset spans human, rodent, electric ray, bovine, porcine, bacterial, and fish species. The electric ray nAChR (6PV7) contains 26 Trp residues with 22 quantum-coupled pairs, exceeding all human targets. Low-speed channels (Ca$_V$1.1, P2X$_3$) lack dense Trp networks entirely. High Trp density thus correlates with fast signaling requirements across species, though the functional significance of this correlation remains to be determined.
+The 19-target dataset spans human, rodent, electric ray, bovine, porcine, bacterial, and fish species. The electric ray nAChR (2BG9) contains 31 Trp residues with 19 quantum-coupled pairs, comparable to the densest human targets. P2X$_3$ remains sparse (4 Trp). However, Ca$_V$1.1 — a slow calcium channel — has the highest Trp count in the dataset (42 Trp, 23 coupled pairs), demonstrating that Trp density alone does not determine signaling speed. The functional role of Trp networks is likely multiplexed, with contributions to structural stability, photoprotection, and possibly quantum coherent effects that vary by protein family.
 
 \subsection{Broader Computational Validation}
 
@@ -302,7 +301,7 @@ The structural constraints derived here --- the sub-$1.5$~nm FRET threshold, $p_
 The calculations establish three physical constraints that any viable biological model must satisfy:
 
 \begin{enumerate}
-\item \textbf{Geometric sub-threshold condition.} Analysis of 20 PDB structures (18 with sufficient Trp density) shows that standalone aromatic networks yield KCKAS coherence scores $S \leq 1.97$, below the classical contextuality bound $S = 2$. This is a geometric fact about the static coordinates: the protein scaffold alone does not provide the conditions for contextuality.
+\item \textbf{Geometric sub-threshold condition.} Analysis of 19 PDB structures (18 with $\geq 3$ Trp residues) shows that standalone aromatic networks yield KCKAS coherence scores $S \leq 1.97$, below the classical contextuality bound $S = 2$. This is a geometric fact about the static coordinates: the protein scaffold alone does not provide the conditions for contextuality.
 
 \item \textbf{Radiative inefficiency of free-space Trp-to-Trp transfer.} Using measured absorption cross-sections from Babcock et al.~\cite{Babcock2024}, free-space Trp-to-Trp radiative transfer is highly inefficient. This is a cross-section calculation, not a biological measurement. It indicates that if biophotons mediate information between Trp cores, they must do so through a different mechanism than direct radiative re-excitation.
 
