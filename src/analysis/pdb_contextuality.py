@@ -42,42 +42,43 @@ KCKAS_OPTIMAL_ANGLE = np.arccos(1.0 / sqrt(5))  # ~1.107 rad = 63.4°
 
 
 def select_trp_pentagram(centres, n_nodes=5):
-    """Select the 5 most strongly coupled Trp residues from a protein.
+    """Select the 5 most tightly packed Trp residues from a protein.
 
-    Picks residues that form a closed cyclic path with maximum
-    total coupling (shortest total distance).
+    Finds the cluster of n_nodes residues with minimum total pairwise
+    distance (i.e., the tightest spatial sub-network). This ensures
+    that the selected residues have the strongest mutual dipole coupling.
     """
     if len(centres) < n_nodes:
         return None
     keys = sorted(centres.keys())
     coords = np.array([centres[k] for k in keys])
+    n = len(coords)
 
     # Compute distance matrix
-    n = len(coords)
     D = np.zeros((n, n))
     for i in range(n):
         for j in range(n):
             D[i, j] = norm(coords[i] - coords[j])
 
-    # Greedy selection: start with the most central node
-    # (minimum sum of distances to all others)
-    centrality = D.sum(axis=1)
-    start = np.argmin(centrality)
+    # Find the n_nodes residues with minimum total pairwise distance
+    # Brute-force search over all combinations (n is typically < 50)
+    best_sum = float('inf')
+    best_idx = None
+    from itertools import combinations
+    for combo in combinations(range(n), n_nodes):
+        total = 0
+        for i in combo:
+            for j in combo:
+                total += D[i, j]
+        total /= 2  # each pair counted twice
+        if total < best_sum:
+            best_sum = total
+            best_idx = combo
 
-    # Select 5 nodes forming a closed cycle with minimal total distance
-    selected = [start]
-    remaining = list(range(n))
-    remaining.remove(start)
-
-    while len(selected) < n_nodes:
-        last = selected[-1]
-        # Find closest unselected node
-        best = min(remaining, key=lambda r: D[last, r])
-        selected.append(best)
-        remaining.remove(best)
-
-    # Return coordinates and keys
+    selected = list(best_idx)
     sel_coords = coords[selected]
+    sel_keys = [keys[i] for i in selected]
+    return sel_coords, sel_keys
     sel_keys = [keys[s] for s in selected]
     return sel_keys, sel_coords
 
