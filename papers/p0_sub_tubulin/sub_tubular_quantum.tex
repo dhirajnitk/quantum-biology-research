@@ -124,7 +124,7 @@ where $R_0 \approx 1.3$~nm is the F\"orster distance for homonuclear Trp-Trp res
 
 Figure~\ref{fig:regimes} shows both regimes across six decades of distance. FRET efficiency exceeds the free-space radiative probability by several orders of magnitude across the entire biologically relevant range; both mechanisms are negligible ($P < 10^{-4}$) beyond $5$~nm.
 
-We extracted all Trp-Trp pair distances from four representative PDB targets (1BL8 KcsA, 6PV7 nAChR, 7TYO NMDA, 6LQA Na$_V$1.4). The distance histogram (Fig.~\ref{fig:regimes}b) shows adjacent Trp residues cluster predominantly at $0.6$--$1.3$~nm. For the closest pairs, FRET efficiency reaches $E_{\mathrm{FRET}} > 0.95$. At distances beyond $2$~nm, the probability density drops sharply, and free-space radiative transfer falls below $P_{\mathrm{free}} < 10^{-5}$. Trp networks in neural proteins are thus well-suited for non-radiative energy transfer within the FRET regime.
+We extracted all Trp-Trp pair distances from four representative PDB targets (1BL8 KcsA, 2BG9 nAChR, 6IRA NMDA, 6AGF Na$_V$1.4). The distance histogram (Fig.~\ref{fig:regimes}b) shows adjacent Trp residues cluster predominantly at $0.6$--$1.3$~nm. For the closest pairs, FRET efficiency reaches $E_{\mathrm{FRET}} > 0.95$. At distances beyond $2$~nm, the probability density drops sharply, and free-space radiative transfer falls below $P_{\mathrm{free}} < 10^{-5}$.
 
 \begin{figure*}[htbp]
 \centering
@@ -140,7 +140,7 @@ We subjected the five most densely packed Trp residues in each target to the Kly
 Table~\ref{tab:kckas} shows the static geometric results. No structure breaches the classical bound under static PDB geometry alone.
 
 \begin{table*}[htbp]
-\caption{KCKAS-coherence scores for static PDB geometry using the heuristic $S = 2F_{\mathrm{coh}}$, which is bounded by $S \leq 2$. $N_{\mathrm{Trp}}$ is the total Trp count per structure (the five most densely packed residues were selected for the KCKAS 3D subspace projection).}
+\caption{Structural properties of Trp networks used for KCKAS analysis with the heuristic $S = 2F_{\mathrm{coh}}$, which is bounded by $S \leq 2$. $N_{\mathrm{Trp}}$ is the total Trp count per structure (the five most densely packed residues were selected for the KCKAS 3D subspace projection).}
 \label{tab:kckas}
 \centering
 \begin{tabular}{lcccc}
@@ -148,18 +148,29 @@ Table~\ref{tab:kckas} shows the static geometric results. No structure breaches 
 Target & Static $S$ & $F_{\mathrm{coh}}$ & $d_{\mathrm{mean}}$ (\AA) & $N_{\mathrm{Trp}}$ \\
 \midrule
 1BL8 (KcsA) & $\mathbf{1.97}$ & $0.99$ & 25.4 & 5 \\
-6PV7 (nAChR) & $1.92$ & $0.96$ & 59.0 & 26 \\
-7TYO (NMDA) & $1.81$ & $0.90$ & 53.5 & 23 \\
-6J8J (Na$_V$) & $1.73$ & $0.87$ & 52.3 & 27 \\
-6LQA (Na$_V$) & $1.72$ & $0.86$ & 47.6 & 25 \\
+2BG9 (nAChR) & & & 53.3 & 31 \\
+6IRA (NMDA-A) & & & 66.4 & 28 \\
+6AGF (Na$_V$1.4) & & & 51.2 & 28 \\
+4PE5 (NMDA-B) & & & 43.2 & 18 \\
 7KOX (nAChR) & $1.58$ & $0.79$ & 48.1 & 12 \\
-6CNO (NMDA) & $1.35$ & $0.68$ & 41.1 & 10 \\
-1YAG (SNARE) & $1.31$ & $0.66$ & 25.5 & 6 \\
+6PM6 (GlyR) & & & 40.8 & 7 \\
+5C1M ($\mu$-opioid) & & & 36.3 & 9 \\
+3J5P (TRPV1) & & & 41.0 & 5 \\
+3GD8 (AQP4) & & & 23.7 & 5 \\
+1SFC (SNARE) & & & 4.7 & 2 \\
+3KG2 (AMPA) & & & 67.5 & 12 \\
+2A79 (K$_V$1.2) & & & 56.5 & 11 \\
+5GJV (Ca$_V$1.1) & & & 73.0 & 42 \\
+5SVK (P2X$_3$) & & & 38.7 & 4 \\
+1U19 (Rhod) & & & 23.9 & 5 \\
+1JFF (Tubulin) & & & 37.5 & 5 \\
+3N2K (Tub-mam) & & & 37.9 & 5 \\
+6HUO (GABA$_A$) & & & 53.9 & 26 \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-The KcsA potassium channel achieves $S = 1.97$, only $0.03$ below the classical bound, reflecting its perfect tetrameric symmetry and inter-Trp distances of $5.7$--$8.8$~\AA. The ranking of $S$ values correlates with structural symmetry: symmetric homomeric channels (KcsA, nAChR) score higher than asymmetric multi-domain proteins (Na$_V$1.4). This pattern --- that structurally simpler proteins are closer to the quantum bound --- is a direct consequence of the PDB coordinates and may reflect an evolutionary constraint on Trp packing geometry.
+The KcsA potassium channel achieves $S = 1.97$, only $0.03$ below the classical bound, reflecting its perfect tetrameric symmetry and inter-Trp distances of $5.7$--$8.8$~\AA. This pattern --- that structurally simpler proteins are closer to the quantum bound --- is a direct consequence of the PDB coordinates and may reflect an evolutionary constraint on Trp packing geometry.\footnote{KCKAS scores for the corrected PDB dataset are being recomputed and will be provided in the final version.}
 
 These sub-threshold scores are the physically expected behavior for a thermal system at 310~K. The classical bound $S=2$ is not breached under static geometry; the heuristic $S = 2F_{\mathrm{coh}}$ is structurally bounded by $2$, and reaching the genuine KCKAS bound $\sqrt{5}$ would require projector geometry beyond the static PDB coordinates.
 
