@@ -140,37 +140,36 @@ We subjected the five most densely packed Trp residues in each target to the Kly
 Table~\ref{tab:kckas} shows the static geometric results. No structure breaches the classical bound under static PDB geometry alone.
 
 \begin{table*}[htbp]
-\caption{Structural properties of Trp networks used for KCKAS analysis with the heuristic $S = 2F_{\mathrm{coh}}$, which is bounded by $S \leq 2$. $N_{\mathrm{Trp}}$ is the total Trp count per structure (the five most densely packed residues were selected for the KCKAS 3D subspace projection).}
+\caption{KCKAS-coherence scores for static PDB geometry using the heuristic $S = 2F_{\mathrm{coh}}$, which is bounded by $S \leq 2$. $N_{\mathrm{Trp}}$ is the total Trp count per structure (the five most densely packed residues were selected for the KCKAS 3D subspace projection).}
 \label{tab:kckas}
 \centering
 \begin{tabular}{lcccc}
 \toprule
 Target & Static $S$ & $F_{\mathrm{coh}}$ & $d_{\mathrm{mean}}$ (\AA) & $N_{\mathrm{Trp}}$ \\
 \midrule
-1BL8 (KcsA) & $\mathbf{1.97}$ & $0.99$ & 25.4 & 5 \\
-2BG9 (nAChR) & & & 53.3 & 31 \\
-6IRA (NMDA-A) & & & 66.4 & 28 \\
-6AGF (Na$_V$1.4) & & & 51.2 & 28 \\
-4PE5 (NMDA-B) & & & 43.2 & 18 \\
-7KOX (nAChR) & $1.58$ & $0.79$ & 48.1 & 12 \\
-6PM6 (GlyR) & & & 40.8 & 7 \\
-5C1M ($\mu$-opioid) & & & 36.3 & 9 \\
-3J5P (TRPV1) & & & 41.0 & 5 \\
-3GD8 (AQP4) & & & 23.7 & 5 \\
-1SFC (SNARE) & & & 4.7 & 2 \\
-3KG2 (AMPA) & & & 67.5 & 12 \\
-2A79 (K$_V$1.2) & & & 56.5 & 11 \\
-5GJV (Ca$_V$1.1) & & & 73.0 & 42 \\
-5SVK (P2X$_3$) & & & 38.7 & 4 \\
-1U19 (Rhod) & & & 23.9 & 5 \\
-1JFF (Tubulin) & & & 37.5 & 5 \\
-3N2K (Tub-mam) & & & 37.9 & 5 \\
-6HUO (GABA$_A$) & & & 53.9 & 26 \\
+1BL8 (KcsA) & $\mathbf{0.70}$ & $0.35$ & 25.4 & 5 \\
+3GD8 (AQP4) & $0.45$ & $0.22$ & 23.7 & 5 \\
+2A79 (K$_V$1.2) & $0.43$ & $0.21$ & 56.5 & 11 \\
+6PM6 (GlyR) & $0.35$ & $0.17$ & 40.8 & 7 \\
+1U19 (Rhod) & $0.33$ & $0.16$ & 23.9 & 5 \\
+3KG2 (AMPA) & $0.27$ & $0.14$ & 67.5 & 12 \\
+5SVK (P2X$_3$) & $0.26$ & $0.13$ & 38.7 & 4 \\
+3J5P (TRPV1) & $0.22$ & $0.11$ & 41.0 & 5 \\
+5C1M ($\mu$-opioid) & $0.19$ & $0.09$ & 36.3 & 9 \\
+4PE5 (NMDA-B) & $0.17$ & $0.08$ & 43.2 & 18 \\
+1JFF (Tubulin) & $0.17$ & $0.08$ & 37.5 & 5 \\
+3N2K (Tub-mam) & $0.15$ & $0.07$ & 37.9 & 5 \\
+7KOX ($\alpha$7 nAChR) & $0.16$ & $0.08$ & 48.1 & 12 \\
+2BG9 (nAChR) & $0.14$ & $0.07$ & 53.3 & 31 \\
+6AGF (Na$_V$1.4) & $0.13$ & $0.07$ & 51.2 & 28 \\
+6IRA (NMDA-A) & $0.10$ & $0.05$ & 66.4 & 28 \\
+6HUO (GABA$_A$) & $0.10$ & $0.05$ & 53.9 & 26 \\
+5GJV (Ca$_V$1.1) & $0.06$ & $0.03$ & 73.0 & 42 \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-The KcsA potassium channel achieves $S = 1.97$, only $0.03$ below the classical bound, reflecting its perfect tetrameric symmetry and inter-Trp distances of $5.7$--$8.8$~\AA. This pattern --- that structurally simpler proteins are closer to the quantum bound --- is a direct consequence of the PDB coordinates and may reflect an evolutionary constraint on Trp packing geometry.\footnote{KCKAS scores for the corrected PDB dataset are being recomputed and will be provided in the final version.}
+The KcsA potassium channel achieves $S = 0.70$, the highest coherence score in the dataset, reflecting its compact Trp packing with inter-Trp distances of $5.7$--$8.8$~\AA. The ranking of $S$ values correlates with structural compactness: small, well-packed proteins (KcsA, AQP4, Rhodopsin) score higher than large multi-domain channels, whose many Trp residues are separated by larger distances, reducing the off-diagonal coupling fraction.
 
 These sub-threshold scores are the physically expected behavior for a thermal system at 310~K. The classical bound $S=2$ is not breached under static geometry; the heuristic $S = 2F_{\mathrm{coh}}$ is structurally bounded by $2$, and reaching the genuine KCKAS bound $\sqrt{5}$ would require projector geometry beyond the static PDB coordinates.
 
@@ -305,14 +304,14 @@ All source code used in this analysis is available at \url{https://github.com/dh
 
 \section{Epistemological Status and Boundary Limits}
 
-The structural constraints derived here --- the sub-$1.5$~nm FRET threshold, $p_{\mathrm{trp}} \approx 1.5\times10^{-5}$ free-space bound, $\tau_{\mathrm{hop}} \sim 18$--$35$~fs hopping time, and $S \leq 1.97$ KCKAS bound --- follow mathematically from PDB coordinates and measured optical parameters. They do not constitute evidence that living neurons employ this architecture, which requires experimental tests (superradiance scaling, phase interference, anesthetic disruption, mutational kill-switch). The robustness of the computed $J_{ij}$ couplings depends on the point-dipole approximation, which overestimates coupling at sub-$1$~nm separations where transition density overlap becomes significant.
+The structural constraints derived here --- the sub-$1.5$~nm FRET threshold, $p_{\mathrm{trp}} \approx 1.5\times10^{-5}$ free-space bound, $\tau_{\mathrm{hop}} \sim 18$--$35$~fs hopping time, and $S \leq 0.70$ KCKAS bound --- follow mathematically from PDB coordinates and measured optical parameters. They do not constitute evidence that living neurons employ this architecture, which requires experimental tests (superradiance scaling, phase interference, anesthetic disruption, mutational kill-switch). The robustness of the computed $J_{ij}$ couplings depends on the point-dipole approximation, which overestimates coupling at sub-$1$~nm separations where transition density overlap becomes significant.
 
 \subsection{Computational Constraints}
 
 The calculations establish three physical constraints that any viable biological model must satisfy:
 
 \begin{enumerate}
-\item \textbf{Geometric sub-threshold condition.} Analysis of 19 PDB structures (18 with $\geq 3$ Trp residues) shows that standalone aromatic networks yield KCKAS coherence scores $S \leq 1.97$, below the classical contextuality bound $S = 2$. This is a geometric fact about the static coordinates: the protein scaffold alone does not provide the conditions for contextuality.
+\item \textbf{Geometric sub-threshold condition.} Analysis of 19 PDB structures (18 with $\geq 3$ Trp residues) shows that standalone aromatic networks yield KCKAS coherence scores $S \leq 0.70$, below the classical contextuality bound $S = 2$. This is a geometric fact about the static coordinates: the protein scaffold alone does not provide the conditions for contextuality.
 
 \item \textbf{Radiative inefficiency of free-space Trp-to-Trp transfer.} Using measured absorption cross-sections from Babcock et al.~\cite{Babcock2024}, free-space Trp-to-Trp radiative transfer is highly inefficient. This is a cross-section calculation, not a biological measurement. It indicates that if biophotons mediate information between Trp cores, they must do so through a different mechanism than direct radiative re-excitation.
 

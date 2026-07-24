@@ -13,11 +13,15 @@ import numpy as np
 from numpy import exp
 
 
-def build_pdb_hamiltonian(centroids, dipoles, dielectric=2.0, J0=-80.0, R0=10.0):
+def build_pdb_hamiltonian(centroids, dipoles, dielectric=2.0, J0=-80.0, R0=10.0,
+                          site_energies=None):
     """Construct static PDB Hamiltonian from Trp coordinates and dipole vectors.
 
     J_ij = (J0 / sqrt(eps)) * (R0 / R_ij)^3 * |kappa|
     kappa = mu_i·mu_j - 3(mu_i·R_hat)(mu_j·R_hat)
+
+    If site_energies is None, diagonal elements are set to 80*(i) cm^{-1}
+    with site-specific disorder ~N(0, 30) cm^{-1}.
     """
     keys = sorted(centroids.keys())
     n = len(keys)
@@ -37,6 +41,13 @@ def build_pdb_hamiltonian(centroids, dipoles, dielectric=2.0, J0=-80.0, R0=10.0)
             J = (J0 / np.sqrt(dielectric)) * (R0 / R) ** 3 * abs(kappa)
             H[i, j] = J
             H[j, i] = J.conj()
+    # Add site energies along the diagonal
+    rng = np.random.RandomState(42)  # fixed seed for reproducibility
+    for i in range(n):
+        if site_energies is not None:
+            H[i, i] = site_energies[i]
+        else:
+            H[i, i] = 80.0 * i + rng.normal(0, 30.0)
     return H, keys
 
 
@@ -66,33 +77,44 @@ KCKAS_QUANTUM_BOUND = 2.23606797749979  # sqrt(5)
 
 
 def compute_kckas_sdp(H, n_projectors=5):
-    """Compute KCKAS contextuality bound via SDP over quantum states.
+    """Compute KCKAS contextuality score for the given Hamiltonian.
 
-    Returns the maximum achievable S = sum(P(v_i = 1)) for the given
-    Hamiltonian, bounded by sqrt(5) for any quantum system.
+    Uses the ground state of the excitonic Hamiltonian H, projects into
+    a 3-dimensional subspace spanned by the three dominant eigenvectors
+    of the Hamiltonian, then evaluates the KCKAS sum.
+
+    Returns S in [0, sqrt(5)] where classical bound is S <= 2.
     """
-    from numpy import sqrt, pi, cos, sin, outer, trace, real
+    from numpy import sqrt, pi, cos, sin, outer, trace, real, zeros, diag
     from numpy.linalg import eigh
 
-    evals, evecs = eigh(H)
-    psi_ground = evecs[:, np.argmin(evals)]
+    if H.shape[0] < 3:
+        return 0.0  # insufficient dimension for KCKAS
 
+    evals, evecs = eigh(H)
+
+    # Use the three lowest-energy eigenstates as the subspace basis
+    # (these are the most physically relevant states at low temperature)
+    subspace = evecs[:, :3]  # n_sites x 3 matrix
+
+    # Build KCKAS projectors in 3D subspace
     theta = np.arccos(1.0 / sqrt(5))
-    vectors = []
+    vectors_3d = []
     for i in range(n_projectors):
         phi = 4.0 * pi * i / n_projectors
         v = np.array([sin(theta) * cos(phi), sin(theta) * sin(phi), cos(theta)])
-        vectors.append(v / np.linalg.norm(v))
+        vectors_3d.append(v / np.linalg.norm(v))
 
-    projectors = [outer(v, v.conj()) for v in vectors]
-    rho = outer(psi_ground, psi_ground.conj())
+    projectors_3d = [outer(v, v.conj()) for v in vectors_3d]
 
-    P_sum = sum(projectors)
-    evals_ps, evecs_ps = eigh(P_sum)
-    psi_opt = evecs_ps[:, np.argmax(evals_ps)]
-    rho_opt = outer(psi_opt, psi_opt.conj())
+    # Project ground state into 3D subspace
+    psi_ground = evecs[:, np.argmin(evals)]  # n_sites vector
+    psi_proj = subspace.T.conj() @ psi_ground  # 3-vector in subspace basis
+    psi_proj = psi_proj / np.linalg.norm(psi_proj)  # normalize
+    rho_proj = outer(psi_proj, psi_proj.conj())  # 3x3 density matrix
 
-    S = sum(real(trace(rho_opt @ P)) for P in projectors)
+    # Compute KCKAS sum in the subspace
+    S = sum(real(trace(rho_proj @ P)) for P in projectors_3d)
     return float(S)
 
 

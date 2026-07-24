@@ -1,0 +1,558 @@
+  Physical Boundaries of Biological Tryptophan Networks: Non-Radiative Excitonic
+                 Energy Hopping vs. Free-Space Optical Signaling
+                                          Dhiraj Kumar1 and Niraj Kumar1
+                                                  1
+                                                      Independent Researcher
+                                                      (Dated: July 23, 2026)
+              We analyze the physical limits of energy transfer in neural tryptophan (Trp) networks using 20
+            cryo-EM and X-ray structures from the Protein Data Bank. Energy transfer is characterized by two
+            distinct regimes separated by a critical distance of ∼ 1.5 nm: (i) non-radiative dipole-dipole coupling
+            (Förster resonance energy transfer, FRET) dominates at sub-1.5 nm separations, with efficiency
+            EFRET > 0.90 for the closest Trp pairs; (ii) free-space radiative transfer is highly inefficient beyond
+            2 nm, with probability Pfree < 10−5 per exciton due to 1/r2 geometric spreading, ultraviolet tissue
+            attenuation (α ∼ 1000 m−1 ), and spectral mismatch between Trp emission (∼ 320–350 nm) and
+            candidate acceptor absorption bands. Pair-distance histograms from 18 neural proteins show that
+            adjacent Trp residues cluster at 0.6–1.3 nm, placing them in the FRET-dominated regime. Using PDB
+            coordinates to compute dipole coupling matrices, we find coupling strengths of Jij ≈ 150–300 cm−1
+            for the closest pairs, corresponding to exciton hopping times of 18–35 fs. This work establishes a
+            two-regime analysis: free-space optical Trp-Trp coupling is highly inefficient, while non-radiative
+            FRET at sub-1.5 nm distances within low-dielectric hydrophobic pockets (ε ≈ 2) is structurally
+            viable and quantified from PDB data.
+
+
+                I.   INTRODUCTION                                 chors, cytoskeletal filaments, and membrane transporters.
+                                                                  For each structure, we extracted the coordinates of all
+   A recurring hypothesis in the biophotonics literature          Trp residues (using the CG atom of each indole ring as a
+proposes that ultra-weak photon emissions (UPE) from              geometric proxy, with an estimated ±0.3 nm boundary
+cellular metabolism serve a functional signaling role. Popp       uncertainty due to side-chain rotamers) and computed
+and colleagues [11] first suggested that biophotons could         the full pair-distance matrix. Pairs with centre-to-centre
+mediate intercellular communication. Tang and Dai [12]            separation < 1.5 nm were classified as quantum-coupled
+demonstrated that biophotons propagate along nerve                (permitting Dexter-type exciton hopping); pairs with 1.5–
+roots and proposed a light-based communication sys-               5 nm separation were classified as optical relay candidates
+tem operating alongside electrical signaling. More re-            (accessible via biophoton signaling).
+cently, Babcock and Kurian [2] showed that dense tryp-
+tophan (Trp) networks in microtubules support room-
+temperature superradiance, and Patwa et al. [4] demon-
+strated quantum-enhanced photoprotection in neuropro-               Table I summarises the Trp network topology of each
+tein architectures. These studies suggested that Trp emis-        target.
+sions could serve biological signaling functions by routing
+optical information through aromatic networks.
+   We quantitatively evaluate that hypothesis. Using mea-
+sured absorption cross-sections, waveguide optics, and
+the Stokes shift between Trp absorption (280 nm) and                 Of the 20 targets surveyed, 18 contain 3–27 Trp residues
+emission (327 nm), we compute an upper bound on free-             with 1–28 quantum-coupled pairs, indicating that dense
+space radiative Trp-to-Trp energy transfer. The result            aromatic networks are common across diverse protein fam-
+shows that free-space optical coupling between Trp cores          ilies. Trp network density correlates with signaling speed
+is highly inefficient under cellular conditions. We then          rather than tissue type: the fastest neural and neuromus-
+characterize the alternative non-radiative regime (FRET)          cular synapses (nAChR, NaV 1.4, NMDA) have among the
+that dominates at sub-1.5 nm separations, quantified di-          highest Trp counts, while slow-signaling channels (CaV 1.1,
+rectly from PDB structural data.                                  P2X3 ) lack them entirely. The two exceptions — CaV 1.1
+                                                                  and P2X3 — have only a single Trp each and form no cou-
+                                                                  pled pairs. Trp network architecture may be associated
+                                                                  with fast synaptic signaling rather than being a tissue-
+                     II.   RESULTS
+                                                                  specific adaptation. The pair counts in Table I should
+                                                                  be interpreted with a boundary uncertainty of approxi-
+ A.   Structural Trp Networks in Neural Receptors                 mately ±0.3 nm near the 1.5 nm cutoff due to the CG
+                                                                  atom proxy for the indole ring center (see Methods). For
+  We analysed 20 cryo-EM and X-ray structures from the            typical targets, this translates to an uncertainty of ±1–11
+Protein Data Bank (PDB), spanning ligand-gated and                pairs in the coupled column, with the largest absolute
+voltage-gated ion channels, GPCRs, synaptic vesicle an-           uncertainties for targets with the most Trp residues.
+                                                                                                                                       2
+
+
+TABLE I. Structural properties of Trp networks in 20 proteins. “Coupled pairs” have R < 1.5 nm; “relay pairs” have
+1.5 ≤ R ≤ 5 nm. Two targets (6J4K, 6Z0C) lacked sufficient Trp density for analysis. Human brain proteins are marked with †.
+Pair counts near the 1.5 nm cutoff have an estimated ±0.3 nm boundary uncertainty due to side-chain rotamers; for targets with
+asymmetric distance distributions near the cutoff, the resulting uncertainty range is reported as asymmetric (e.g., Rhodopsin
+28+3
+   −11 ).
+
+                 PDB     Protein                                                 Source              Trp Coupled   Relay
+                 7TYO NMDA receptor GluN1/GluN2A                            Human brain†             23   21 ± 9   115 ± 9
+                 6CNO NMDA receptor GluN1/GluN2B                            Human brain†             10   5±4      30 ± 4
+                 6V2W GABAA receptor                                        Human brain†              7   2±1      14 ± 1
+                 7KOX α7 nicotinic AChR                                     Human brain†             12    4+8
+                                                                                                            −4     34 ± 8
+                 6PLL Glycine receptor                                      Human brain†              3   3±1       0±1
+                 7T6L µ-opioid receptor                                     Human brain†             10   5±1      35 ± 1
+                 7EIX TRPV1 ion channel                                    Human (sensory)†          11   7±5      47 ± 5
+                 7RJK Aquaporin-4                                         Human brain (glial)†        3   1±1       2±1
+                 6PV7 nACh receptor                                    T. marmorata (electric ray)   26 22 ± 11 127 ± 11
+                 6LQA NaV 1.4 sodium channel                            Human (skeletal muscle)      25 18 ± 10 150 ± 10
+                 6J8J NaV 1.4 (alt. conform.)                           Human (skeletal muscle)      27 20 ± 10 141 ± 10
+                 1YAG SNARE complex                                          Rat (neural)            6   3±2      12 ± 2
+                 7SQS AMPA receptor GluA2                                    Rat (neural)            7   4±3     17 ± 3
+                 7S6M KV 1.2 potassium channel                               Rat (neural)            11 2 ± 2     26 ± 2
+                 1JFF Tubulin αβ dimer                                    Porcine (ubiquitous)       5   1±1      7±1
+                 3N2K Tubulin αβ dimer                                  Mammalian (ubiquitous)       5   1±1      7±1
+                 1BL8 KcsA K+ channel                                          Bacterial              5  3±1       7±1
+                 6N5B Rhodopsin                                             Bovine (retinal)         17 28+3
+                                                                                                           −11   76 ± 11
+                 6J4K CaV 1.1 calcium channel                           Rabbit (skeletal muscle)      1    0        0
+                 6Z0C P2X3 purinergic receptor                                 Zebrafish              1    0        0
+
+
+          B.   Proof of Free-Space Infeasibility                                where σFWHM = 21.2 nm is the Gaussian standard
+                                                                              deviation (FWHM ≈ 50 nm for Trp). Combining these,
+     1.   Upper bound on Trp-to-Trp radiative transfer                        the per-exciton Trp-to-Trp re-excitation probability is:
+
+   A Trp exciton at the absorption peak (280 nm,                                       ptrp = narr (σ327 /Atarget ) ≈ 1.5 × 10−5 ,   (1)
+35 700 cm−1 ) undergoes radiative relaxation with Stokes
+shift to the emission peak (327 nm). The measured quan-
+tum yield for Trp in polymerized tubulin is QY = 0.21 [2].                      where Atarget ≈ 1 nm2 is the effective target area and
+The expected number of emitted photons per absorbed                          narr = ngen × fcapture is the expected number of photons
+photon is therefore ngen = QY ≈ 0.21. We caution                             arriving at the target. Since narr ≪ 1, the linear approx-
+that this QY is measured in tubulin and may differ for                       imation is exact to first order, and the binomial form
+membrane-bound ion channels due to local quenching                           (1 − p)n reduces to n · p.
+environments.                                                                   The low probability (p ≈ 1.5 × 10−5 ) is the central
+   Only a fraction of these photons are captured by the                      result: free-space radiative Trp-to-Trp energy transfer
+lipid membrane waveguide due to total internal reflection                    faces severe physical limitations under cellular conditions.
+constraints. The capture fraction is determined by the                       This upper bound depends primarily on measured quan-
+critical angle θc = arcsin(ncytoplasm /nlipid ) for the inter-               tities (absorption cross-section σ280 = 2.1 × 10−21 m2 ,
+face between the lipid core (nlipid ≈ 1.45) and the aqueous                  quantum yield QY = 0.21[2], and the geometric capture
+cytoplasm (ncytoplasm ≈ 1.33):                                               fraction fcapture = 0.40) rather than model-dependent
+                                                                             assumptions.
+                 fcapture = cos θc ≈ 0.40.
+   The Trp absorption cross-section at the emission wave-
+length is obtained from the measured extinction coefficient                    C.   Two-Regime Analysis: FRET vs. Free-Space
+at 280 nm (ε ≈ 5600 M−1 cm−1 ) scaled by the Gaussian
+absorption lineshape:
+                                                                                Energy transfer between Trp residues is governed by two
+                    [︄       (︃          )︃2 ]︄                               physically distinct mechanisms depending on separation
+                         1         47                                         distance. We define the distance-dependent efficiency as
+   σ327 = σ280 exp −                              ≈ 1.8 × 10−22 m2 ,
+                         2        21.2                                        a two-regime function:
+                                                                                                                        3
+
+                                                                                   III.   DISCUSSION
+                       1
+              ⎧
+              ⎪
+              ⎨              6
+                               ,    r < 1.5 nm (FRET)
+                                                                         A.    The Observability Crossover
+Ptransfer (r) = 1 + (r/R0 )
+               ⎩ΦF · σ e−αr , r > 2 nm (radiative)
+               ⎪
+                       4πr2                                       Nuclear spin models (e.g., Posner molecules [5]) pro-
+   where R0 ≈ 1.3 nm is the Förster distance for homonu-      pose coherence times of seconds to hours but are optically
+clear Trp-Trp resonance, ΦF = 0.21 is the Trp quantum          inaccessible—nuclear spins interact weakly with both the
+yield, σ = 1.8 × 10−22 m2 is the Trp absorption cross-         environment and measurement devices. Trp networks, by
+section at the emission wavelength, and α ≈ 1000 m−1 is        contrast, have 50–100 fs coherence [2] but are directly
+the ultraviolet attenuation coefficient in cytoplasm.          observable via UV spectroscopy: Trp is the most strongly
+   Figure 1 shows both regimes across six decades of dis-      fluorescent amino acid, with a large absorption cross-
+tance. The crossover occurs at r ≈ 3–5 nm: below this,         section at 280 nm and well-characterized emission at
+FRET efficiency exceeds free-space probability by fac-         327 nm [7]. Trp networks are shielded enough (ε ≈ 2)
+tors of 10–50; above it, both mechanisms are negligible        to maintain coherence, yet accessible to measurement
+(P < 10−4 ).                                                   via superradiance, transient absorption, and fluorescence
+   We extracted all Trp-Trp pair distances from four repre-    lifetime spectroscopy. Key experimental parameters: UV
+sentative PDB targets (1BL8 KcsA, 6PV7 nAChR, 7TYO             pump pulses should be < 50 fs duration at 280 nm with
+NMDA, 6LQA NaV 1.4). The distance histogram (Fig. 1b)          fluence < 1 µJ/cm2 to avoid multiphoton damage; de-
+shows adjacent Trp residues cluster predominantly at 0.6–      tection can be performed with ultrafast streak cameras
+1.3 nm. For the closest pairs, FRET efficiency reaches         (< 200 fs resolution) or 2D electronic spectroscopy on
+EFRET > 0.95. At distances beyond 2 nm, the probability        isolated KcsA or nAChR in lipid nanodiscs.
+density drops sharply, and free-space radiative transfer
+falls below Pfree < 10−5 . Trp networks in neural pro-
+teins are thus well-suited for non-radiative energy transfer                  B.    Falsifiable Predictions
+within the FRET regime.
+                                                                 Four experimental tests can distinguish quantum su-
+    D.   Structural Quantum Geometry: KCKAS
+                                                               perradiance from classical noise in Trp networks:
+                Contextuality Scores
+                                                                  1. Superradiance scaling (Test 1): Stimulate Trp
+                                                                     arrays with < 50 fs UV laser pulses at 280 nm with
+   We subjected the five most densely packed Trp residues
+                                                                     intensity N = 108 –1012 photons/pulse. Classical
+in each target to the Klyachko-Can-Klyachko-Shumovsky
+                                                                     emitters give I(N ) ∝ N (linear); superradiant en-
+(KCKAS) contextuality test [3], using a coherence-factor
+                                                                     sembles give I(N ) ∝ N 2 at small N (quadratic) [6].
+heuristic (Fcoh ) derived from the ratio of off-diagonal to
+                                                                     Babcock et al. [2] observed super-linear scaling in
+diagonal Hamiltonian matrix elements. This produces a
+                                                                     polymerized tubulin at room temperature, consis-
+KCKAS-coherence
+           √        score S that ranges from 0 (fully disor-
+                                                                     tent with the superradiant prediction.
+dered) to 5 ≈ 2.236 (maximal quantum contextuality).
+The classical bound for non-contextual hidden variable            2. Phase interference (Test 2): Split a UV laser
+models is S ≤ 2.                                                     into two paths with variable phase delay θ and
+   Table II shows the static geometric results. No structure         recombine on a membrane patch containing Trp
+breaches the classical bound under static PDB geometry               arrays. Classical (incoherent) response: I(θ) =
+alone.                                                               const; quantum (coherent) response: I(θ) ∝ 1 +
+   The KcsA potassium channel achieves S = 1.97, only                V cos θ with fringe visibility V > 0. Measurement
+0.03 below the classical bound, reflecting its perfect               of V > 0 would confirm phase coherence across the
+tetrameric symmetry and inter-Trp distances of 5.7–8.8 Å.           ensemble.
+The ranking of S values correlates with structural symme-
+try: symmetric homomeric channels (KcsA, nAChR) score             3. Anesthetic disruption of Trp packing geome-
+higher than asymmetric multi-domain proteins (NaV 1.4).              try (Test 3): General anesthetics (propofol, isoflu-
+This pattern — that structurally simpler proteins are                rane, xenon) bind to hydrophobic pockets in neural
+closer to the quantum bound — is a direct consequence                proteins adjacent to Trp networks. If Trp network
+of the PDB coordinates and may reflect an evolutionary               geometry supports quantum coherent coupling, anes-
+constraint on Trp packing geometry.                                  thetic binding should disrupt the local dielectric
+   These sub-threshold scores are the physically expected            environment or Trp packing geometry, measurably
+behavior for a thermal system at 310 K. The classical                altering Trp fluorescence lifetime or near-UV optical
+bound S = 2 is not breached under static geometry;                   properties.
+reaching S > 2 would require active non-equilibrium
+driving, the nature and magnitude of which remains an             4. Mutational kill-switch (Test 4): Site-directed
+open question beyond the scope of this structural analysis.          mutagenesis of key Trp residues to phenylalanine
+                                                                                                                                                                                                 4
+
+                                                     (a) Two-regime energy transfer                                                   (b) PDB pair distances (4 targets)
+                                          100                                 FRET (1/(1+(r/R0)^6))                                                                         1.5 nm cutoff
+                                                                              Free-space radiative                            0.16
+                                         10−1                                                                                       FRET
+     Transfer efficiency / Probability
+                                                                              1.5 nm cutoff
+                                                                                                                              0.14dominant
+                                         10−2                                                                                 0.12
+
+
+
+
+                                                                                                        Probability density
+                                         10−3                                                                                 0.10                   Free-space
+                                                                                                                                                     inefficient
+                                         10−4                                                                                 0.08
+                                         10−5                                                                                 0.06
+                                         10−6                                                                                 0.04
+                                         10−7                                                                                 0.02
+                                         10−8                                                                                 0.00
+                                                     100           101           102              103                              0      2        4     6       8     10       12          14
+                                                           Separation distance r (nm)                                                              Trp-Trp distance (nm)
+
+FIG. 1. (a) Two-regime energy transfer efficiency as a function of Trp-Trp separation distance. FRET (blue) dominates at
+sub-1.5 nm; free-space radiative transfer (orange) is negligible at all biologically relevant distances. The green dashed line marks
+the 1.5 nm cutoff. (b) Histogram of all Trp-Trp pair distances from four representative PDB targets, showing clustering in the
+FRET-dominated regime.
+
+
+                              TABLE II. KCKAS-coherence scores for static PDB geometry. Classical bound S ≤ 2; quantum bound S ≤ 2.236.
+                                                                          Target               Static S Fcoh dmean (Å) NTrp
+                                                                          1BL8 (KcsA)            1.97                   0.99         25.4     5
+                                                                          6PV7 (nAChR)           1.92                   0.96         59.0     26
+                                                                          7TYO (NMDA)            1.81                   0.90         53.5     23
+                                                                          6J8J (NaV )            1.73                   0.87         52.3     27
+                                                                          6LQA (NaV )            1.72                   0.86         47.6     25
+                                                                          7KOX (nAChR)           1.58                   0.79         48.1     12
+                                                                          6CNO (NMDA)            1.35                   0.68         41.1     10
+                                                                          1YAG (SNARE)           1.31                   0.66         25.5      6
+
+
+                               (Trp→Phe) shifts the absorption spectrum and al-                                    Their work characterized Trp networks as ultrafast optical
+                               ters the transition dipole orientation. If Trp network                              emitters, but left open the question of biological function.
+                               coupling relies on the specific dipole coupling ma-                                    We extend the Babcock et al. framework by evaluat-
+                               trix Jij , Trp→Phe mutations should collapse the                                    ing the efficiency of free-space Trp-to-Trp energy trans-
+                               superradiant decay rate enhancement and suppress                                    fer, which proves highly inefficient, and computing the
+                               S below 2.0, while leaving classical thermal gating                                 structural and thermodynamic bounds on non-radiative
+                               unaffected.                                                                         coupling within the FRET regime.
+
+
+                                                C.   Relation to Existing Work                                                 2.   Macro-oscillatory Drive and Cytoelectric Coupling
+
+  Our results relate to several ongoing discussions in                                                                The concept that macroscopic neural electromagnetic
+quantum biology, which we briefly contextualize.                                                                   fields interact with subcellular structures has gained
+                                                                                                                   traction under the cytoelectric coupling hypothesis [9].
+                                                                                                                   This framework proposes that macro-scale electric fields
+1.                 Trp Networks as Optical Emitters: The Babcock-Kurian                                            from synchronized neural ensembles actively modulate
+                                     Foundation                                                                    molecular-level information processing.
+                                                                                                                      Our work complements the cytoelectric coupling hy-
+  Babcock et al. [2] established that Trp networks in                                                              pothesis by providing structural constraints derived from
+protein lattices exhibit room-temperature superradiance,                                                           real PDB coordinates. The dipole-dipole coupling matri-
+demonstrating that collective quantum optical states can                                                           ces Jij computed from 18 protein structures provide the
+survive thermal noise in structured aromatic architectures.                                                        quantitative structural basis that cytoelectric coupling
+                                                                                                                         5
+
+models currently lack.                                          functional significance of this correlation remains to be
+                                                                determined.
+
+          3.   The Membrane vs. Microtubule Debate
+                                                                       E.    Broader Computational Validation
+   A central open question in quantum biology is whether
+functional quantum effects occur in microtubule lattices           The same methods applied to the FMO photosynthetic
+(the Orch-OR paradigm) or in membrane-associated pro-           complex yield results consistent with the expected behav-
+tein networks. Our sub-tubular model places the quantum         ior of disordered excitonic systems: ENAQT optimum
+layer in hydrophobic pockets (ε ≈ 2) of individual synap-       at γ ≈ 100 cm−1 (29.4% efficiency) and Landauer ratio
+tic membrane proteins, not in the hollow microtubule            of ∼ 390× the thermodynamic limit. These results are
+core. The structural data supports this: all 18 membrane-       presented in detail in companion manuscripts.
+associated targets in our dataset (ion channels, receptors,
+GPCRs, transporters) contain dense Trp networks, while
+the microtubule proteins (1JFF, 3N2K) have only 5 Trp                            F.     Summary of Constraints
+with 1 coupled pair each — among the lowest in the
+dataset. This is consistent with a direct comparison using
+the published Trp coordinate data from Babcock et al. [2]:         The structural constraints derived from this analysis
+their 104-Trp tubulin assembly yields Jmax = 19.6 cm−1 ,        include coherent hopping timescale (τhop ∼ 18–35 fs) and
+which is 5–20× weaker than the membrane protein targets         the two-regime crossover at ∼ 1.5 nm separating FRET-
+in our dataset, confirming that ion channel Trp networks        dominated sub-1.5 nm interactions from highly inefficient
+are more densely packed than microtubule lattices.              free-space propagation beyond 2 nm.
+                                                                   The computational framework combines structural
+                                                                bioinformatics with open quantum system methods. The
+4.    HEOM Bottlenecks and Machine Learning Acceleration        two-regime analysis distinguishes FRET-dominated sub-
+                                                                1.5 nm dipole-dipole coupling from highly inefficient free-
+                                                                space propagation beyond 2 nm (see Limitations for the
+   HEOM calculations are computationally expensive [1].
+                                                                near-field cross-section caveat and the distinction be-
+Simulating large protein libraries is currently intractable.
+                                                                tween far-field and near-field formalisms). The constraint
+Machine learning surrogate models trained on structural
+                                                                model is consistent with the ∼ 13 fs decoherence bound
+features can bypass this bottleneck, as demonstrated in
+                                                                at 310 K [1], as the hypothetical quantum layer is re-
+related work (companion manuscript, see Zenodo [13]).
+                                                                stricted to 50–100 fs local dynamics within low-dielectric
+                                                                hydrophobic pockets (ε ≈ 2) inside individual proteins [2].
+                                                                   The biophotons in this model originate as byproducts of
+                5.   Summary of Contributions
+                                                                mitochondrial oxidative phosphorylation, not as dedicated
+                                                                signaling expenditures. If Trp networks absorb metabolic
+  This analysis yields two results:                             UV spikes, a fraction (∼ 21% quantum yield [2]) would be
+                                                                re-emitted as 327 nm fluorescence. The photoprotective
+     1. Free-space limitations: Using measured absorp-
+                                                                dissipation of excess energy as heat would pay the energy
+        tion cross-sections and waveguide optics, free-space
+                                                                cost; the fluorescent fraction would be a byproduct.
+        Trp-to-Trp radiative transfer is highly inefficient,
+                                                                   The structural correlation between protein symmetry
+        indicating that long-range optical coupling faces se-
+                                                                and KCKAS-coherence score is a direct consequence of
+        vere physical constraints under cellular conditions.
+                                                                PDB coordinates: symmetric homomeric channels (KcsA,
+     2. FRET regime constraints: The structural                 nAChR) score higher than asymmetric multi-domain pro-
+        bounds for non-radiative transfer are quantified,       teins (NaV 1.4). Four experimental tests (superradiance
+        including the sub-1.5 nm coupling threshold and         scaling, phase interference, anesthetic disruption, and
+        coherent hopping timescale.                             mutational kill-switch) could distinguish the model from
+                                                                classical alternatives, should such experiments be per-
+                                                                formed.
+                D.   Cross-Species Patterns
+
+   The 20-target dataset spans human, rodent, electric                      G.        Limitations and Future Work
+ray, bovine, porcine, bacterial, and fish species. The elec-
+tric ray nAChR (6PV7) contains 26 Trp residues with                Several limitations should be noted, which define clear
+22 quantum-coupled pairs, exceeding all human targets.          boundaries between the computationally verified aspects
+Low-speed channels (CaV 1.1, P2X3 ) lack dense Trp net-         of this model and its open hypotheses.
+works entirely. High Trp density thus correlates with              Center-of-mass proxy. The Trp pair-distance calcu-
+fast signaling requirements across species, though the          lation uses the CG (carbon gamma) atom as a proxy for
+                                                                                                                                          6
+
+the full indole ring centre of mass. Dipole-dipole inter-     the true near-field coupling is captured by the FRET
+actions depend sensitively on both distance and relative      formalism in Section II.C.
+orientation of the transition dipole moments. The cur-           Machine learning scope. The machine learning
+rent treatment omits explicit orientation vectors, which      surrogate model described in the companion manuscript
+may overestimate or underestimate coupling for specific       (see Zenodo [13]) is a proof-of-concept trained on synthetic
+geometric arrangements. Full transition dipole moment         data. It is not yet validated on experimental or large-scale
+orientations, computed from quantum chemistry, would          structural data. We present it as a framework for future
+refine these estimates. Additionally, the indole ring has     high-throughput screening rather than as a fully validated
+two close-lying excited states (La and Lb ) with different    predictive tool.
+transition dipole directions; using a single CG→CH2 axis
+for both may introduce systematic errors in the orienta-
+tion factor κ.
+   Dielectric approximation. The model assumes a                                           IV.     METHODS
+static local dielectric constant ε ≈ 2 inside hydrophobic
+pockets. In living cells, transient water penetration and
+                                                                     A.    PDB Data Acquisition and Analysis
+protein structural fluctuations can cause local dielectric
+spikes that would accelerate decoherence. The 50–100 fs
+coherence window cited here should be understood as              All protein structures were obtained from the RCSB
+an upper bound under optimal shielding conditions [2].        Protein Data Bank (rcsb.org) as PDB files. For each
+Monte Carlo simulations with site-wise dielectric pertur-     structure, we extracted both the centroid coordinates
+bations (ε ∈ [1.5, 3.0]) show that the coupling estimates     and the full transition dipole moment vectors for every
+change by less than 1% relative to the fixed-ε baseline.      Tryptophan residue. Centroids were taken as the CG
+   KCKAS contextuality heuristic. The KCKAS test              (carbon gamma) atom position. Transition dipole vectors
+as implemented uses a coherence-factor heuristic (Fcoh )      µ̂ were computed from the heavy-atom coordinates of
+rather than a full quantum state optimisation. Com-           each indole ring, using the CG → CH2 direction as the
+puting a genuine KCKAS violation requires finding the         long-axis approximation for the S0 → S1 (La ) transition.
+optimal quantum state that maximises S for the given          The dipole-dipole coupling between sites i and j was then
+projector geometry. Our heuristic may overestimate or         computed with the full orientation factor:
+underestimate structural “readiness” for contextuality.
+We therefore label this metric a “KCKAS-coherence score”
+and distinguish it from a formal contextuality proof.                     (︃         )︃3
+                                                                    J0         R0
+   Time-dependent driving. We do not specify a mi-            Jij = √                      ·|κ|,    κ = µ̂i ·µ̂j −3(µ̂i ·R̂ij )(µ̂j ·R̂ij ),
+                                                                      ε        Rij
+croscopic mechanism for the non-equilibrium driving that
+would be required to push the KCKAS score from its
+static value (S ≤ 1.97) above the classical bound (S > 2).       where κ is the orientation factor (range [−2, 2]), R̂ij is
+One candidate — modulation of Trp site energies by            the inter-residue displacement unit vector, and J0 = −80
+the membrane electric field — would require coupling          cm−1 at R0 = 10 Å. This replaces the isotropic dipole
+strengths orders of magnitude larger than a direct Stark      approximation used in earlier microtubule models and
+shift from gamma-band fields (∼ 10–100 V/m) could pro-        directly addresses the orientation sensitivity of dipole-
+vide. This remains an open theoretical question that any      dipole couplings [10]. We note that the indole ring has
+viable Trp-based signaling model would need to address.       two close-lying excited states — La (280 nm, long-axis
+   Free-space cross-section approximation. The                transition) and Lb (290 nm, short-axis transition) — with
+per-exciton re-excitation probability ptrp = σ327 /Atarget    different transition dipole orientations. Analysis of the
+Eq. (1) treats the Trp-to-Trp energy transfer as a geo-       full La +Lb coupling matrix for KcsA yields maximum
+metric capture problem using a far-field absorption cross-    La -La couplings of 137 cm−1 , Lb -Lb couplings of 31 cm−1 ,
+section. This approximation is valid only when the inter-     and La -Lb cross-couplings up to 328 cm−1 , confirming
+Trp separation r ≫ λ (far-field regime). At sub-10 nm         that the single-state approximation underestimates the
+separation distances with λ ≈ 327 nm (r/λ ≈ 0.03), the        available coupling strength by up to a factor of 2.
+system is deep in the near-field regime where dipole-dipole      Pairs with R < 1.5 nm were classified as coupled
+coupling (1/r3 or 1/r6 scaling) governs energy transfer.      (FRET/exciton hopping regime); pairs with 1.5 ≤ R ≤
+The far-field cross-section ratio therefore overestimates     5.0 nm were classified as relay candidates. The CG proxy
+the angular selectivity of capture and underestimates         serves as an initial geometric filter; full La /Lb orientation-
+the near-field coupling strength. The crossover distance      resolved coupling matrices (discussed above) are required
+where far-field and near-field treatments converge is ap-     for refined coupling estimates. Our distance extraction
+proximately r ≈ λ/2π ≈ 52 nm for 327 nm light, well           methodology is consistent with the approach used by
+beyond the Trp-Trp separations considered here. Our           Babcock et al. [2] for tubulin Trp networks, and their
+calculated ptrp ≈ 1.5 × 10−5 should therefore be inter-       published Trp coordinate tables provide independent vali-
+preted as an upper bound on free-space radiative transfer;    dation of the distance cutoffs used here.
+                                                                                                                       7
+
+               B.   Biophoton Relay Model                      E.   Independent Validation Using Published Trp
+                                                                                 Coordinates
+   The quantum yield QY = 0.21 follows the measured
+value for Trp in polymerized tubulin [2]; we apply this         To cross-validate our methodology against indepen-
+as an approximation across all targets, but caution that     dently published data, we applied the same distance anal-
+QY can vary substantially with local protein environment.    ysis and dipole coupling calculations to the Trp coordi-
+Membrane-bound targets (ion channels, receptors) may         nate table from Babcock et al. [2] (their PAPER table,
+have different quenching rates than polymerized tubulin,     containing 104 Trp positions and dipole vectors for a
+and direct measurements in each target are needed to         tubulin assembly). Our pipeline reproduces the expected
+confirm the assumed value. The Trp absorption cross-         structural statistics: minimum pair distance of 15.0 Å,
+section at 280 nm is σ280 = 2.1 × 10−21 m2 , derived from    405 relay pairs in the 1.5–5 nm range, and dipole cou-
+the reported extinction coefficient ε280 ≈ 5600 M−1 cm−1 .   pling strengths consistent with the reported superradiant
+The cross-section at other wavelengths follows a Gaussian    regime (Jmax = 19.6 cm−1 , Fcoh = 0.91). This inde-
+lineshape with FWHM = 50 nm centred at 280 nm. Lipid         pendent check confirms that our distance extraction and
+membrane refractive index n = 1.45 follows standard          coupling computation methods yield results consistent
+values for the hydrophobic core [8].                         with the published literature. Notably, the Babcock et
+                                                             al. tubulin assembly has no sub-1.5 nm Trp pairs and its
+                                                             maximum coupling is 5–20× weaker than the ion channel
+          C.    KCKAS Contextuality Score                    targets in our dataset, indicating that Trp networks in
+                                                             neural receptors are significantly more tightly packed than
+                                                             those in microtubule lattices.
+   For each target, we selected 5 Trp residues forming
+a closed cyclic path with maximum total coupling, pro-
+jected from the full N -site single-exciton manifold into                    F.    Hamiltonian Engine
+a 3-dimensional subspace spanned by the three domi-
+nant eigenvectors of the inter-Trp coupling matrix. The
+KCKAS projectors were constructed as the optimal 5-             The static PDB Hamiltonian √ HPDB was constructed
+vector set in this 3D Hilbert space, with adjacent vectors   using Jij = J0 (R0 /Rij )3 / ε with J0 = −80 cm−1 ,
+                                                       √     R0 = 10 Å, and site energies Ei = 80(i − 1) + N (0, σE )
+satisfying the orthogonality condition ⟨vi |vi+1 ⟩ = 1/ 5.
+Each projector Πi = |vi ⟩⟨vi | corresponds to a measure-     cm−1 with σE = 30 cm−1 . For the closest Trp pairs
+ment on a collective exciton mode delocalized across the     (R ≈ 5–8 Å), coupling strengths reach Jij ≈ 150–
+selected Trp residues, not on an individual atomic site.     300 cm−1 , corresponding to an inter-site coherent hopping
+The coherence factor was computed as:                        time τhop ≈ ℏ/Jij ≈ 18–35 fs. This hopping timescale
+                                                             should be distinguished from the bath-induced dephas-
+                                                             ing time, which we compute separately via HEOM. The
+                                                             exciton population persists longer (the radiative lifetime
+                           ∑︁
+                              i̸=j |Hij |
+               Fcoh = ∑︁                ∑︁          .        of Trp in protein is ∼ 1–3 ns [7]), so the binary outcome
+                        i̸=j |Hij | +    i |Hii |
+                                                             (photon emitted or not) is determined on a separate,
+                                        √                    longer timescale. To verify that the Markovian Lind-
+  The KCKAS sum is S = Fcoh ×                5.              blad approximation captures the essential physics, we
+                                                             performed full non-Markovian Hierarchical Equations of
+                                                             Motion (HEOM) simulations on the KcsA Trp network
+         D.     Thermal Fluctuation Analysis                 at 310 K using an optimized single-bath Drude-Lorentz
+                                                             model (λ = 35 cm−1 , γc = 53 cm−1 , Nk = 2, Lmax = 2).
+   To assess whether thermal vibrations at physiologi-       Exponential fitting of the HEOM coherence trajectory
+cal temperature disrupt the dipole-dipole couplings, we      yields a dephasing time τHEOM ≈ 17 fs, comparable to
+performed an Einstein-model analysis of Trp position         the coherent hopping time τhop ≈ ℏ/Jmax ≈ 26 fs. The
+fluctuations at 310 K. Using a protein force constant of     small discrepancy reflects weak non-Markovian memory
+κ ≈ 1 kcal mol−1 Å−2 (typical for protein backbones), the   effects in the protein bath that slightly accelerate dephas-
+root-mean-square
+        √︁         positional fluctuation per Trp residue    ing relative to the hopping timescale, but the qualitative
+is σx ≈ kB T /κ ≈ 0.79 Å. Over 103 Monte Carlo sam-         dynamics remain unchanged. This is consistent with the
+ples with random Gaussian positional noise applied to        ∼ 13 fs dephasing from full HEOM simulations [1] and
+the KcsA Trp coordinates, the mean maximum coupling          the 50–100 fs superradiant emission window [2].
+⟨Jmax ⟩ = 155 ± 50 cm−1 , retaining approximately 76% of
+the static-crystal coupling value (204 cm−1 ). This con-
+firms that thermal motion at 310 K does not destroy the                       G.    Data Availability
+dipole-dipole couplings required for excitonic superradi-
+ance, consistent with the room-temperature superradiance       All source code used in this analysis is available at
+observed in Trp networks [2].                                https://github.com/dhirajnitk/subnanometer-trp
+                                                                                                                       8
+
+-transport. A preprint of this manuscript is archived at        These experiments remain to be performed. Until they
+Zenodo [13]. Analysis scripts include: PDB extraction         are, this work is best understood as a theoretical frame-
+and distance classification (trp extractor.py), biopho-       work that establishes structural plausibility, information-
+ton relay calculations (biophoton relay.py), KCKAS            theoretic consistency, and thermodynamic viability — not
+contextuality (pdb contextuality.py), and the Hamil-          as a demonstrated biological mechanism.
+tonian engine (quantum hamiltonian engine.py).
+
+                                                                             ACKNOWLEDGMENTS
+        V.   EPISTEMOLOGICAL STATUS AND
+                 BOUNDARY LIMITS                                The authors thank the open-access RCSB Protein Data
+                                                              Bank and the developers of QuTiP, NumPy, and SciPy.
+   We distinguish between what this framework demon-
+strates computationally and what remains to be estab-
+lished experimentally. This is a mathematically consistent
+framework grounded in real structural data; it does not
+provide direct evidence that the proposed mechanism
+operates in living biological systems.
+
+
+             A.   Computational Constraints
+
+  The calculations establish three physical constraints
+that any viable biological model must satisfy:
+
+   1. Geometric sub-threshold condition. Analy-
+      sis of 20 PDB structures (18 with sufficient Trp
+      density) shows that standalone aromatic networks
+      yield KCKAS coherence scores S ≤ 1.97, below the
+      classical contextuality bound S = 2. This is a geo-
+      metric fact about the static coordinates: the protein
+      scaffold alone does not provide the conditions for
+      contextuality.
+
+   2. Radiative inefficiency of free-space Trp-to-
+      Trp transfer. Using measured absorption cross-
+      sections from Babcock et al. [2], free-space Trp-to-
+      Trp radiative transfer is highly inefficient. This is
+      a cross-section calculation, not a biological mea-
+      surement. It indicates that if biophotons mediate
+      information between Trp cores, they must do so
+      through a different mechanism than direct radiative
+      re-excitation.
+
+   3. Non-equilibrium driving required for contex-
+      tuality. Reaching S > 2 from the static scores
+      (S ≤ 1.97) would require a non-equilibrium driving
+      mechanism, the nature of which remains an open
+      theoretical question.
+
+
+   B.    Open Biological Questions and Falsification
+                      Boundaries
+
+  Whether the proposed architecture is utilized by liv-
+ing neurons remains an open question. The framework
+makes three testable predictions, summarized with their
+assumptions and falsification criteria in Table III:
+                                                                                                                            9
+
+
+            TABLE III. Falsifiable hypotheses with assumptions, experimental tests, and falsification criteria.
+            Hypothesis                             Vulnerable Assump- Experimental Test Falsification Crite-
+                                                   tion                                 ria
+            1. Non-equilibrium driving           Driving mechanism Search for correla- Absence of Trp fluo-
+                                                 unspecified             tion between mem- rescence modulation
+                                                                         brane potential and with membrane po-
+                                                                         Trp fluorescence      tential
+            2. Functional contextuality          KCKAS heuristic re- Search for non-local Absence of non-local
+                                                 flects biological real- correlations in Bell- correlations in Bell
+                                                 ity                     type neural assays tests
+            3. Dielectric shielding enables FRET pdark ≈ 0 in ε ≈ Measure Trp fluores- Measured                non-
+                                                 2 pockets (negligi- cence lifetime in hy- radiative           rate
+                                                 ble non-radiative de- drophobic pockets exceeds radiative
+                                                 cay)                    of target proteins rate (pdark > 0.5)
+
+
+
+
+[1] F. Firmenich, N. S. Babcock, and P. Kurian,                   [7] J. R. Lakowicz, Principles of Fluorescence Spectroscopy,
+    arXiv:2602.02868 (2026).                                          3rd ed. (Springer, 2006).
+[2] N. S. Babcock, G. Montes-Cabrera, K. E. Oberhofer, M.         [8] G. van Meer, D. R. Voelker, and G. W. Feigenson, Nat.
+    Chergui, G. L. Celardo, and P. Kurian, J. Phys. Chem.             Rev. Mol. Cell Biol. 9, 112 (2008).
+    B 128, 4035 (2024); code and data available at https:         [9] D. A. Pinotsis, G. Fridman, and E. K. Miller, Prog. Neu-
+    //gitlab.com/superradiance/superradiance_in_tryp                  robiol. 226, 102465 (2023).
+    tophan_architectures.                                        [10] B. Valeur and M. N. Berberan-Santos, Molecular Flu-
+[3] A. A. Klyachko et al., Phys. Rev. Lett. 101, 020403               orescence: Principles and Applications, 2nd ed. (Wiley,
+    (2008).                                                           2012).
+[4] H. Patwa, N. S. Babcock, and P. Kurian, Front. Phys. 12,     [11] F. A. Popp et al., Experientia 48, 1029 (1992).
+    1387271 (2024).                                              [12] R. Tang and J. Dai, PLoS ONE 9, e93540 (2014).
+[5] M. P. A. Fisher, Ann. Phys. 362, 593 (2015).                 [13] D.       Kumar       and      N.      Kumar,        Zen-
+[6] R. H. Dicke, Phys. Rev. 93, 99 (1954).                            odo:10.5281/zenodo.21478163 (2026).
+
